@@ -12,3 +12,5 @@ export * from './glob.icon';
 export * from './pin.icon';
 export * from './bell.icon';
 export * from './map.svg';
+export * from './download.icon';
+export * from './tumbtack.icon'

@@ -1,28 +1,17 @@
-// MainLayout.jsx
-import React from "react";
-import Navbar from "./Navbar";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-// IMAGES
-
-import Globe from "../images/Globe.svg";
-import Pin from "../images/Pin.svg";
-import Bell from "../images/Bell.svg";
-import Map from "../images/map.svg";
 import {
-  ConfusedIcon,
-  DizzyIcon,
-  ExplodingIcon,
   LocationIcon,
-  SickIcon,
   GlobIcon,
   PinIcon,
   BellIcon,
   MapSvg,
   SearchIcon,
 } from "@/assets/icons";
-import { Modal } from "@/components/common";
+import { Link } from "react-router-dom";
+import { StatsCards } from "@/components/common";
+import { SITE_COLLECTION_LIST } from "@/components/common/stats-cards";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -304,41 +293,7 @@ export const DashboardPage = () => {
           </Menu>
         </div>
       </div>
-      <div className="grid grid-cols-1  lg:grid-cols-4 md:grid-cols-2 gap-7 mb-7 md:mb-12">
-        <div className="bg-red-500 p-4 pb-5 px-8 text-white rounded-lg">
-          <div className=" grid place-content-center bg-white p-[6px] size-9 rounded-md mb-4">
-            <ExplodingIcon />
-          </div>
-
-          <h2 className="text-[22px] font-semibold mb-3">Critical</h2>
-          <h3 className="text-[17px]">Status</h3>
-          <p className="text-[13px]">Current Status of site</p>
-        </div>
-        <div className="bg-green-500 p-4 pb-5 px-8 text-white rounded-lg">
-          <div className=" grid place-content-center bg-white p-[6px] size-9 rounded-md mb-4">
-            <DizzyIcon />
-          </div>
-          <h2 className="text-[22px] font-semibold mb-3">Undetermined</h2>
-          <h3 className="text-[17px]">Source</h3>
-          <p className="text-[13px]">Current Power Source</p>
-        </div>
-        <div className="bg-orange-400 p-4 pb-5 px-8 text-white rounded-lg">
-          <div className=" grid place-content-center bg-white p-[6px] size-9 rounded-md mb-4">
-            <ConfusedIcon />
-          </div>
-          <h2 className="text-[22px] font-semibold mb-3">Infinitehr</h2>
-          <h3 className="text-[17px]">Estimated Backup</h3>
-          <p className="text-[13px]">Current Battery Backup Available</p>
-        </div>
-        <div className="bg-indigo-950 p-4 pb-5 px-8 text-white rounded-lg">
-          <div className=" grid place-content-center bg-white p-[6px] size-9 rounded-md mb-4">
-            <SickIcon />
-          </div>
-          <h2 className="text-[22px] font-semibold mb-3">Site Load</h2>
-          <h3 className="text-[17px]">0kW</h3>
-          <p className="text-[13px]">Current Site Load</p>
-        </div>
-      </div>
+      <StatsCards data={SITE_COLLECTION_LIST} />
       <div className="flex lg:flex-row flex-col  gap-4">
         <div className=" lg:w-2/3 w-full bg-white rounded-2xl md:p-8 p-5 ">
           <div className="flex md:flex-row md:gap-0 gap-4  flex-col w-full mb-16 justify-between">
@@ -348,7 +303,9 @@ export const DashboardPage = () => {
             </h2>
 
             <div className="flex flex-wrap md:flex-nowrap gap-3 items-center gap-x-2">
-              <SearchIcon />
+              <button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-4 py-4 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
+                <SearchIcon />
+              </button>
 
               <Menu as="div" className="relative inline-block text-left">
                 <div>
@@ -833,12 +790,12 @@ export const DashboardPage = () => {
                 </div>
               </div>
             </div>
-            <button
-              type="button"
-              className="w-full text-center uppercase text-blue-600 font-semibold pt-3 pb-2"
+            <Link
+              to="/events"
+              className=" block min-w-max text-center uppercase text-blue-600 font-semibold pt-3 pb-2"
             >
               view detail
-            </button>
+            </Link>
           </div>
           <div className="bg-white rounded-2xl px-6 py-4">
             <h2 className="font-bold text-2xl text-gray-700 flex gap-x-2 items-center pb-3">

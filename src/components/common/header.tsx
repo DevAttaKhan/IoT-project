@@ -1,5 +1,12 @@
 import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import {
+  Disclosure,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Transition,
+} from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 // IMAGES
 import Logo from "../../assets/images/logo.png";
@@ -79,9 +86,9 @@ export const Header = () => {
                             >
                               <path
                                 stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                               />
                             </svg>
@@ -95,34 +102,17 @@ export const Header = () => {
                       </form>
                       <Menu as="div" className="relative ml-3">
                         <div>
-                          <Menu.Button className="relative flex max-w-xs items-center rounded-full text-gray-400 text-sm focus:outline-none ">
+                          <MenuButton className="relative flex max-w-xs items-center rounded-full text-gray-400 text-sm focus:outline-none ">
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
-                            <button
-                              type="button"
-                              className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white  rounded-lg focus:outline-none d"
-                            >
-                              <svg
-                                className="w-6 h-6 text-white-800  dark:text-white "
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 16 21"
-                              >
-                                <path
-                                  stroke="currentColor"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M8 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C15 15.4 15 16 14.462 16H1.538C1 16 1 15.4 1 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 8 3.464ZM4.54 16a3.48 3.48 0 0 0 6.92 0H4.54Z"
-                                ></path>
-                              </svg>
+                            <div className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white  rounded-lg focus:outline-none d">
+                              <BellIcon className="h-7 w-7 text-white" />
                               <span className="sr-only">Notifications</span>
                               <div className="absolute top-0 right-0 inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-700 border-2 border-white rounded-full">
                                 20
                               </div>
-                            </button>
-                          </Menu.Button>
+                            </div>
+                          </MenuButton>
                         </div>
                         <Transition
                           as={Fragment}
@@ -133,7 +123,7 @@ export const Header = () => {
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-[280px] origin-top-right rounded-md bg-white py-1 shadow-lg focus:outline-none p-4">
+                          <MenuItems className="absolute right-0 z-10 mt-2 w-[280px] origin-top-right rounded-md bg-white py-1 shadow-lg focus:outline-none p-4">
                             <div className="flex justify-between border-b pt-2 pb-2 mb-4">
                               <h4 className="text-black text-md font-semibold">
                                 Notification
@@ -146,9 +136,9 @@ export const Header = () => {
                               </button>
                             </div>
                             <div className="border-b pb-2">
-                              {notifications.map((item) => (
-                                <Menu.Item key={item.title}>
-                                  {({ active }) => (
+                              {notifications.map((item, i) => (
+                                <MenuItem key={item.title + i}>
+                                  {({ active }: { active: boolean }) => (
                                     <div className="flex gap-x-2">
                                       <span className="w-[12px] h-[12px] block bg-blue-700 rounded-full mt-2"></span>
                                       <div>
@@ -159,12 +149,12 @@ export const Header = () => {
                                           {item.title}
                                         </p>
                                         <p className="text-sm font-semibold mb-1">
-                                          {item.date}
+                                          {item.dateAndTime}
                                         </p>
                                       </div>
                                     </div>
                                   )}
-                                </Menu.Item>
+                                </MenuItem>
                               ))}
                             </div>
                             <button
@@ -173,12 +163,12 @@ export const Header = () => {
                             >
                               VIEW ALL
                             </button>
-                          </Menu.Items>
+                          </MenuItems>
                         </Transition>
                       </Menu>
                       <Menu as="div" className="relative ml-3">
                         <div>
-                          <Menu.Button className="relative flex max-w-xs items-center rounded-full  text-sm focus:outline-none">
+                          <MenuButton className="relative flex max-w-xs items-center rounded-full  text-sm focus:outline-none">
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
                             <div className="flex items-center">
@@ -196,7 +186,7 @@ export const Header = () => {
                                 </p>
                               </div>
                             </div>
-                          </Menu.Button>
+                          </MenuButton>
                         </div>
                         <Transition
                           as={Fragment}
@@ -207,9 +197,9 @@ export const Header = () => {
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="absolute right-0  z-10 mt-2 w-[200px] origin-top-right rounded-md bg-white px-4 py-4 pb-2 shadow-lg focus:outline-none">
+                          <MenuItems className="absolute right-0  z-10 mt-2 w-[200px] origin-top-right rounded-md bg-white px-4 py-4 pb-2 shadow-lg focus:outline-none">
                             {userNavigation.map((item) => (
-                              <Menu.Item key={item.name}>
+                              <MenuItem key={item.name}>
                                 {({ active }) => (
                                   <div className="flex gap-x-3  items-center mb-3">
                                     <svg
@@ -238,9 +228,9 @@ export const Header = () => {
                                     </a>
                                   </div>
                                 )}
-                              </Menu.Item>
+                              </MenuItem>
                             ))}
-                          </Menu.Items>
+                          </MenuItems>
                         </Transition>
                       </Menu>
                     </div>

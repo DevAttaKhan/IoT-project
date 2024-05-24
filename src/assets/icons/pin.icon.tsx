@@ -6,13 +6,13 @@ export const PinIcon = () => {
       id="Group_157"
       data-name="Group 157"
       xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       width="24"
       height="23.988"
       viewBox="0 0 24 23.988"
     >
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clipPath">
           <rect
             id="Rectangle_503"
             data-name="Rectangle 503"
@@ -26,7 +26,7 @@ export const PinIcon = () => {
         id="Group_156"
         data-name="Group 156"
         transform="translate(0 0)"
-        clip-path="url(#clip-path)"
+        clipPath="url(#clipPath)"
       >
         <path
           id="Path_2008"

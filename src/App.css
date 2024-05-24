@@ -1,0 +1,15 @@
+table {
+  @apply md:mx-6 mx-0 md:w-full w-max table-fixed;
+}
+
+table tr {
+  @apply border-b;
+}
+
+table tr th {
+  @apply md:pr-0 pr-4 text-gray-400 tracking-wide font-medium  uppercase text-left pb-2;
+}
+
+table tr td {
+  @apply md:pr-0 pr-4 pt-6 pb-10 font-medium;
+}

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "@/components/common/protected-route";
-import { DashboardPage } from "./pages/dashboard.page";
+import { DashboardPage, EventsPage } from "./pages";
 
 export const routes = createBrowserRouter([
   {
@@ -19,8 +19,8 @@ export const routes = createBrowserRouter([
         element: <DashboardPage />,
       },
       {
-        path: "about",
-        element: <h1>Login Here</h1>,
+        path: "events",
+        element: <EventsPage />,
       },
     ],
   },

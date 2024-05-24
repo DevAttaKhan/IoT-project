@@ -12,7 +12,7 @@ export const GlobIcon = () => {
       viewBox="0 0 24 24"
     >
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clipPath">
           <rect
             id="Rectangle_501"
             data-name="Rectangle 501"
@@ -22,7 +22,7 @@ export const GlobIcon = () => {
           />
         </clipPath>
       </defs>
-      <g id="Group_152" data-name="Group 152" clip-path="url(#clip-path)">
+      <g id="Group_152" data-name="Group 152" clipPath="url(#clipPath)">
         <path
           id="Path_2006"
           data-name="Path 2006"

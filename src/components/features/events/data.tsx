@@ -1,5 +1,7 @@
+import { SelectDropdown } from "@/components/common";
 import { ColumnDef } from "@tanstack/react-table";
-
+import classNames from "classnames";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 export const EVENTS_FILTER_OPTIONS = [
   { id: 1, value: "Option 1" },
   { id: 2, value: "Option 2" },
@@ -7,129 +9,127 @@ export const EVENTS_FILTER_OPTIONS = [
   { id: 4, value: "Option 4" },
 ];
 
-export interface Employee {
-  id: string;
+export interface IEvent {
+  id?: string;
+  sev: "green" | "red" | "brown";
   name: string;
-  department: string;
-  email: string;
-  location: string;
-  status: "active" | "vacation" | "other leave" | "left";
+  description: string;
+  beginnign: string;
+  elapsedTime: string;
+  action: string;
 }
 
-export const employeeData: Employee[] = [
+export const EventData: IEvent[] = [
   {
-    id: "1",
-    name: "John Doe",
-    department: "HR",
-    email: "john.doe@example.com",
-    location: "New York",
-    status: "active",
+    sev: "green",
+    name: "Main Fail - Grid Outag",
+    description: "Grid Outage more than 4h",
+    beginnign: "Apr 18,2024 | 22:24",
+    elapsedTime: "15 days | 01:05 hrs",
+    action: "",
   },
   {
-    id: "2",
-    name: "Jane Smith",
-    department: "IT",
-    email: "jane.smith@example.com",
-    location: "San Francisco",
-    status: "vacation",
+    sev: "red",
+    name: "Main Fail - Grid Outag",
+    description: "Grid Outage more than 4h",
+    beginnign: "Apr 18,2024 | 22:24",
+    elapsedTime: "15 days | 01:05 hrs",
+    action: "",
   },
   {
-    id: "3",
-    name: "Bob Johnson",
-    department: "Finance",
-    email: "bob.johnson@example.com",
-    location: "Chicago",
-    status: "other leave",
+    sev: "red",
+    name: "Main Fail - Grid Outag",
+    description: "Grid Outage more than 4h",
+    beginnign: "Apr 18,2024 | 22:24",
+    elapsedTime: "15 days | 01:05 hrs",
+    action: "",
   },
   {
-    id: "4",
-    name: "Alice Brown",
-    department: "Marketing",
-    email: "alice.brown@example.com",
-    location: "Denver",
-    status: "left",
+    sev: "brown",
+    name: "Main Fail - Grid Outag",
+    description: "Grid Outage more than 4h",
+    beginnign: "Apr 18,2024 | 22:24",
+    elapsedTime: "15 days | 01:05 hrs",
+    action: "",
   },
   {
-    id: "5",
-    name: "David Wilson",
-    department: "Sales",
-    email: "david.wilson@example.com",
-    location: "Houston",
-    status: "active",
+    sev: "green",
+    name: "Main Fail - Grid Outag",
+    description: "Grid Outage more than 4h",
+    beginnign: "Apr 18,2024 | 22:24",
+    elapsedTime: "15 days | 01:05 hrs",
+    action: "",
   },
   {
-    id: "6",
-    name: "Emily Taylor",
-    department: "Engineering",
-    email: "emily.taylor@example.com",
-    location: "Denver",
-    status: "vacation",
+    sev: "green",
+    name: "Main Fail - Grid Outag",
+    description: "Grid Outage more than 4h",
+    beginnign: "Apr 18,2024 | 22:24",
+    elapsedTime: "15 days | 01:05 hrs",
+    action: "",
   },
   {
-    id: "7",
-    name: "Michael Lee",
-    department: "IT",
-    email: "michael.lee@example.com",
-    location: "Seattle",
-    status: "other leave",
-  },
-  {
-    id: "8",
-    name: "Olivia Hernandez",
-    department: "Finance",
-    email: "olivia.hernandez@example.com",
-    location: "Denver",
-    status: "left",
-  },
-  {
-    id: "9",
-    name: "Sophia Martinez",
-    department: "Marketing",
-    email: "sophia.martinez@example.com",
-    location: "Atlanta",
-    status: "active",
-  },
-  {
-    id: "10",
-    name: "James Adams",
-    department: "Sales",
-    email: "james.adams@example.com",
-    location: "New York",
-    status: "vacation",
-  },
-  {
-    id: "11",
-    name: "James Frost",
-    department: "Finance",
-    email: "james.frost@example.com",
-    location: "Denver",
-    status: "active",
-  },
-  {
-    id: "12",
-    name: "Lucy Heinz",
-    department: "IT",
-    email: "lucy.heinz@example.com",
-    location: "New York",
-    status: "active",
+    sev: "green",
+    name: "Main Fail - Grid Outag",
+    description: "Grid Outage more than 4h",
+    beginnign: "Apr 18,2024 | 22:24",
+    elapsedTime: "15 days | 01:05 hrs",
+    action: "",
   },
 ];
 
-export const columns: ColumnDef<Employee>[] = [
+export const columns: ColumnDef<IEvent>[] = [
+  {
+    accessorKey: "sev",
+    header: "SAV",
+    cell: ({ row }) => {
+      const { sev } = row.original;
+      return (
+        <div
+          className={classNames("w-4 h-4 rounded-full  ", {
+            "bg-green-600": sev === "green",
+            "bg-red-600": sev === "red",
+            "bg-red-900": sev === "brown",
+          })}
+        ></div>
+      );
+    },
+  },
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Description",
+    cell: ({ row }) => {
+      return (
+        <div>
+          <p className="text-base mb-1">{row.original.name}</p>
+          <p className="text-dark-gray text-xs">{row.original.description}</p>
+        </div>
+      );
+    },
   },
   {
-    accessorKey: "department",
-    header: "department",
+    accessorKey: "beginnign",
+    header: "beginnign",
   },
   {
-    accessorKey: "email",
-    header: "email",
+    accessorKey: "elapsedTime",
+    header: "Elapsed Time",
   },
   {
-    accessorKey: "location",
-    header: "location",
+    accessorKey: "action",
+    header: "Actions",
+    cell: ({ row }) => {
+      return (
+        <SelectDropdown
+          icon={
+            <EllipsisVerticalIcon className="-mr-1 h-5 w-5 text-black cursor-pointer" />
+          }
+          options={[
+            { id: 1, value: "edit" },
+            { id: 2, value: "delete" },
+          ]}
+        />
+      );
+    },
   },
 ];

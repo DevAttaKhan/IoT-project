@@ -121,23 +121,6 @@ export function DataTable<TData, TValue>({
             </tr>
           )}
         </tbody>
-
-        <div>
-          {table.getFooterGroups().map((footerGroup) => (
-            <tr key={footerGroup.id}>
-              {footerGroup.headers.map((header) => (
-                <td key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.footer,
-                        header.getContext()
-                      )}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </div>
       </table>
       {/* <div className="flex justify-end pt-4">
         <DataTablePagination table={table}></DataTablePagination>

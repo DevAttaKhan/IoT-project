@@ -1,5 +1,5 @@
 import { DataTable } from "@/components/common/data-table";
-import { EVENTS_FILTER_OPTIONS, columns, employeeData } from "./data";
+import { EVENTS_FILTER_OPTIONS, columns, EventData } from "./data";
 import { SelectDropdown } from "@/components/common";
 import { DownloadIcon, SearchIcon, TumbtackIcon } from "@/assets/icons";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
@@ -34,7 +34,7 @@ export const EventsTable = () => {
       </div>
 
       <div className="md:overflow-x-visible overflow-x-auto">
-        <DataTable columns={columns} data={employeeData} />
+        <DataTable columns={columns} data={EventData} />
       </div>
     </div>
   );

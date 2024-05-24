@@ -12,7 +12,7 @@ export const BellIcon = () => {
       viewBox="0 0 24 28.801"
     >
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clipPath">
           <rect
             id="Rectangle_504"
             data-name="Rectangle 504"
@@ -22,7 +22,7 @@ export const BellIcon = () => {
           />
         </clipPath>
       </defs>
-      <g id="Group_158" data-name="Group 158" clip-path="url(#clip-path)">
+      <g id="Group_158" data-name="Group 158" clipPath="url(#clipPath)">
         <path
           id="Path_2009"
           data-name="Path 2009"

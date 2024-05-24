@@ -4,13 +4,13 @@ export const FileIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       width="10.935"
       height="14.05"
       viewBox="0 0 10.935 14.05"
     >
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clipPath">
           <rect
             id="Rectangle_454"
             data-name="Rectangle 454"
@@ -20,7 +20,7 @@ export const FileIcon = () => {
           />
         </clipPath>
       </defs>
-      <g id="Group_54" data-name="Group 54" clip-path="url(#clip-path)">
+      <g id="Group_54" data-name="Group 54" clipPath="url(#clipPath)">
         <path
           id="Path_1948"
           data-name="Path 1948"

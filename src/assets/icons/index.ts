@@ -14,6 +14,7 @@ export * from './bell.icon';
 export * from './map.svg';
 export * from './download.icon';
 export * from './tumbtack.icon'
+export * from './close.icon'
 export * from './users.icon';
 export * from './user.icon';
 export * from './chart.icon';
@@ -27,5 +28,5 @@ export * from './inactive-notification.icon';
 export * from './inactive-password.icon';
 export * from './inactive-trash.icon';
 export * from './inactive-user.icon';
-
-
+export * from './circle-edit.icon';
+export * from './circle-cross.icon';

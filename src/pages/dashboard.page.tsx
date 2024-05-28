@@ -1,645 +1,27 @@
 import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import {
-  LocationIcon,
-  GlobIcon,
-  PinIcon,
-  BellIcon,
-  MapSvg,
-  SearchIcon,
-} from "@/assets/icons";
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Transition,
+} from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { PinIcon, BellIcon } from "@/assets/icons";
 import { Link } from "react-router-dom";
-import { StatsCards } from "@/components/common";
+import { FilterBar, StatsCards } from "@/components/common";
 import { SITE_COLLECTION_LIST } from "@/components/common/stats-cards";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { SiteLocationTable } from "@/components/features/dashboard/site-locations-table";
+import classNames from "classnames";
 
 export const DashboardPage = () => {
   return (
-    <div className="p-6 max-w-[1360px] mx-auto">
-      <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between md:mb-10 mb-7">
-        <h2 className=" text-3xl text-gray-700 font-bold flex gap-x-2 items-center">
-          <GlobIcon />
-          Site Collection
-        </h2>
-
-        <div className="flex gap-x-2">
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="inline-flex items-center w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md font-normal text-slate-400 shadow-sm hover:bg-gray-50">
-                Region
-                <ChevronDownIcon
-                  className="-mr-1 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-              </Menu.Button>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Account settings
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Support
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        License
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <form method="POST" action="#">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          type="submit"
-                          className={classNames(
-                            active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block w-full px-4 py-2 text-left text-sm"
-                          )}
-                        >
-                          Sign out
-                        </button>
-                      )}
-                    </Menu.Item>
-                  </form>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
-                City
-                <ChevronDownIcon
-                  className="-mr-1 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-              </Menu.Button>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Account settings
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Support
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        License
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <form method="POST" action="#">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          type="submit"
-                          className={classNames(
-                            active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block w-full px-4 py-2 text-left text-sm"
-                          )}
-                        >
-                          Sign out
-                        </button>
-                      )}
-                    </Menu.Item>
-                  </form>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
-                Site
-                <ChevronDownIcon
-                  className="-mr-1 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-              </Menu.Button>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Account settings
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Support
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        License
-                      </a>
-                    )}
-                  </Menu.Item>
-                  <form method="POST" action="#">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          type="submit"
-                          className={classNames(
-                            active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700",
-                            "block w-full px-4 py-2 text-left text-sm"
-                          )}
-                        >
-                          Sign out
-                        </button>
-                      )}
-                    </Menu.Item>
-                  </form>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-        </div>
-      </div>
+    <div>
+      <FilterBar screenName="Site Collection" />
       <StatsCards data={SITE_COLLECTION_LIST} />
       <div className="flex lg:flex-row flex-col  gap-4">
-        <div className=" lg:w-2/3 w-full bg-white rounded-2xl md:p-8 p-5 ">
-          <div className="flex md:flex-row md:gap-0 gap-4  flex-col w-full mb-16 justify-between">
-            <h2 className="font-bold text-2xl text-gray-700 flex gap-x-2 items-center">
-              <LocationIcon />
-              Site Locations
-            </h2>
+        <SiteLocationTable />
 
-            <div className="flex flex-wrap md:flex-nowrap gap-3 items-center gap-x-2">
-              <button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-4 py-4 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
-                <SearchIcon />
-              </button>
-
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
-                    Filter
-                    <ChevronDownIcon
-                      className="-mr-1 h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                  </Menu.Button>
-                </div>
-
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Account settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Support
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            License
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <form method="POST" action="#">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              type="submit"
-                              className={classNames(
-                                active
-                                  ? "bg-gray-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block w-full px-4 py-2 text-left text-sm"
-                              )}
-                            >
-                              Sign out
-                            </button>
-                          )}
-                        </Menu.Item>
-                      </form>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
-                    Filter
-                    <ChevronDownIcon
-                      className="-mr-1 h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                  </Menu.Button>
-                </div>
-
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Account settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Support
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            License
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <form method="POST" action="#">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              type="submit"
-                              className={classNames(
-                                active
-                                  ? "bg-gray-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block w-full px-4 py-2 text-left text-sm"
-                              )}
-                            >
-                              Sign out
-                            </button>
-                          )}
-                        </Menu.Item>
-                      </form>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
-                    Filter
-                    <ChevronDownIcon
-                      className="-mr-1 h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                  </Menu.Button>
-                </div>
-
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Account settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Support
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            License
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <form method="POST" action="#">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              type="submit"
-                              className={classNames(
-                                active
-                                  ? "bg-gray-100 text-gray-900"
-                                  : "text-gray-700",
-                                "block w-full px-4 py-2 text-left text-sm"
-                              )}
-                            >
-                              Sign out
-                            </button>
-                          )}
-                        </Menu.Item>
-                      </form>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </div>
-          </div>
-          <div className="mb-28">
-            <MapSvg />
-          </div>
-          <div className="md:overflow-x-visible overflow-x-auto">
-            <table
-              id="customers"
-              className="md:mx-6 mx-0 md:w-full w-max table-fixed"
-            >
-              <tr className="border-b">
-                <th className="md:pr-0 pr-4 text-gray-400 tracking-wide font-medium text-md  uppercase text-left pb-2">
-                  Site #
-                </th>
-                <th className="md:pr-0 pr-4 text-gray-400 tracking-wide font-medium text-md uppercase text-left pb-2">
-                  Location
-                </th>
-                <th className="md:pr-0 pr-4 text-gray-400 tracking-wide font-medium text-md uppercase text-left pb-2">
-                  Vibration Sensor
-                </th>
-                <th className="md:pr-0 pr-4 text-gray-400 tracking-wide font-medium text-md uppercase text-left pb-2">
-                  Smart Lock
-                </th>
-              </tr>
-              <tr className="border-b">
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">HAU1724</td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  216 Maxine Garden
-                </td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  <span className="w-[12px] h-[12px] inline-block me-2 bg-green-500 rounded-full"></span>
-                  <span>ON</span>
-                </td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  <span className="w-[12px] h-[12px] inline-block me-2 bg-red-600 rounded-full"></span>
-                  <span>CLOSE</span>
-                </td>
-              </tr>
-              <tr className="border-b">
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">HAU1724</td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  216 Maxine Garden
-                </td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  <span className="w-[12px] h-[12px] inline-block me-2 bg-green-500 rounded-full"></span>
-                  <span>ON</span>
-                </td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  <span className="w-[12px] h-[12px] inline-block me-2 bg-red-600 rounded-full"></span>
-                  <span>CLOSE</span>
-                </td>
-              </tr>
-              <tr>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">HAU1724</td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  216 Maxine Garden
-                </td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  <span className="w-[12px] h-[12px] inline-block me-2 bg-green-500 rounded-full"></span>
-                  <span>ON</span>
-                </td>
-                <td className="md:pr-0 pr-4 pt-6 pb-10 font-medium">
-                  <span className="w-[12px] h-[12px] inline-block me-2 bg-red-600 rounded-full"></span>
-                  <span>CLOSE</span>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
         <div className="lg:w-1/3 w-full ">
           <div className="bg-white rounded-2xl px-6 py-4 mb-4">
             <div className="flex items-center justify-between gap-x-5 mb-7">
@@ -656,13 +38,13 @@ export const DashboardPage = () => {
               </div>
               <Menu as="div" className="relative inline-block text-left">
                 <div>
-                  <Menu.Button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
+                  <MenuButton className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
                     Filter
                     <ChevronDownIcon
                       className="-mr-1 h-5 w-5 text-gray-400"
                       aria-hidden="true"
                     />
-                  </Menu.Button>
+                  </MenuButton>
                 </div>
 
                 <Transition
@@ -674,9 +56,9 @@ export const DashboardPage = () => {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
-                      <Menu.Item>
+                      <MenuItem>
                         {({ active }) => (
                           <a
                             href="#"
@@ -690,8 +72,8 @@ export const DashboardPage = () => {
                             Account settings
                           </a>
                         )}
-                      </Menu.Item>
-                      <Menu.Item>
+                      </MenuItem>
+                      <MenuItem>
                         {({ active }) => (
                           <a
                             href="#"
@@ -705,8 +87,8 @@ export const DashboardPage = () => {
                             Support
                           </a>
                         )}
-                      </Menu.Item>
-                      <Menu.Item>
+                      </MenuItem>
+                      <MenuItem>
                         {({ active }) => (
                           <a
                             href="#"
@@ -720,9 +102,9 @@ export const DashboardPage = () => {
                             License
                           </a>
                         )}
-                      </Menu.Item>
+                      </MenuItem>
                       <form method="POST" action="#">
-                        <Menu.Item>
+                        <MenuItem>
                           {({ active }) => (
                             <button
                               type="submit"
@@ -736,10 +118,10 @@ export const DashboardPage = () => {
                               Sign out
                             </button>
                           )}
-                        </Menu.Item>
+                        </MenuItem>
                       </form>
                     </div>
-                  </Menu.Items>
+                  </MenuItems>
                 </Transition>
               </Menu>
             </div>
@@ -839,9 +221,9 @@ export const DashboardPage = () => {
                   data-name="28%"
                   transform="translate(212.686 100.666) rotate(8)"
                   fill="#fff"
-                  font-size="13"
-                  font-family="Poppins-SemiBold, Poppins"
-                  font-weight="600"
+                  fontSize="13"
+                  fontFamily="Poppins-SemiBold, Poppins"
+                  fontWeight="600"
                 >
                   <tspan x="-26.598" y="0">
                     28%

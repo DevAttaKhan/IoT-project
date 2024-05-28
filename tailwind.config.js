@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         "dark-gray": "#A8A8A8",
+        bluebonnet: "#1921FA",
       },
     },
   },

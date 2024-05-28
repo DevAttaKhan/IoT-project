@@ -64,7 +64,7 @@ export const Header = () => {
         <Disclosure as="nav" className="bg-[#000239]">
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-[1440px] px-5">
+              <div className="mx-auto max-w-[1440px] px-5 py-3 md:py-7">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex items-center gap-1 gap-x-2 ">
@@ -72,7 +72,7 @@ export const Header = () => {
                     </div>
                   </div>
                   <div className="hidden md:flex ">
-                    <div className="ml-4 flex items-center gap-5 py-7 pe-8  border-e-2 me-5 border-slate-700 md:ml-6">
+                    <div className="ml-4 flex items-center gap-5  pe-8  border-e-2 me-5 border-slate-700 md:ml-6">
                       {/* Profile dropdown */}
                       <form className="max-w-md mx-auto">
                         <div className="relative">

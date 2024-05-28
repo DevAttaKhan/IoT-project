@@ -78,7 +78,7 @@ export const EventData: IEvent[] = [
   },
 ];
 
-export const columns: ColumnDef<IEvent>[] = [
+export const columns = (actions: any): ColumnDef<IEvent>[] => [
   {
     accessorKey: "sev",
     header: "SAV",

@@ -5,6 +5,7 @@ export const MapSvg = () => {
       width="669.082"
       height="347.938"
       viewBox="0 0 669.082 347.938"
+      className="w-full"
     >
       <g id="map" transform="translate(0 21.347)">
         <path

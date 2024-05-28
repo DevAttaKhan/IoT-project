@@ -13,3 +13,7 @@ table tr th {
 table tr td {
   @apply md:pr-0 pr-4 pt-6 pb-10 font-medium font-normal;
 }
+
+.primary-button {
+  @apply uppercase text-white font-bold text-sm px-4 py-[10px] rounded bg-bluebonnet;
+}

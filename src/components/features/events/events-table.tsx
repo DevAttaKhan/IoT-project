@@ -25,7 +25,7 @@ export const EventsTable = () => {
           <button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
             <MinusIcon className=" h-6 w-6 text-black" />
           </button>
-          <button className="inline-flex w-full shadow justify-center gap-x-1.5 rounded-md bg-white px-4 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
+          <button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-4 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
             <DownloadIcon />
           </button>
 

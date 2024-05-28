@@ -14,3 +14,8 @@ export * from './bell.icon';
 export * from './map.svg';
 export * from './download.icon';
 export * from './tumbtack.icon'
+export * from './users.icon';
+export * from './user.icon';
+export * from './chart.icon';
+export * from  './circle-edit.icon';
+export * from  './circle-cross.icon';

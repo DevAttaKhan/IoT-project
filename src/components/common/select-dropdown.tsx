@@ -13,7 +13,7 @@ type Props = {
   name?: string;
   label?: string;
   icon?: React.ReactNode;
-  buttonClass: string;
+  buttonClass?: string;
   options: { id: number; value: string }[];
 };
 

@@ -18,5 +18,15 @@ export * from './close.icon'
 export * from './users.icon';
 export * from './user.icon';
 export * from './chart.icon';
+export * from  './circle-edit.icon';
+export * from  './circle-cross.icon';
+export * from './active-user.icon';
+export * from './active-password.icon';
+export * from './active-notification.icon';
+export * from './active-trash.icon';
+export * from './inactive-notification.icon';
+export * from './inactive-password.icon';
+export * from './inactive-trash.icon';
+export * from './inactive-user.icon';
 export * from './circle-edit.icon';
 export * from './circle-cross.icon';

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "@/components/common/protected-route";
-import { DashboardPage, EventsPage, ProfilePage } from "./pages";
+import { DashboardPage, EventsPage, ProfilePage, HardwaresPage } from "./pages";
 import { UsersPage } from "./pages/users.page";
 
 export const routes = createBrowserRouter([
@@ -30,6 +30,10 @@ export const routes = createBrowserRouter([
       {
         path: "events",
         element: <EventsPage />,
+      },
+      {
+        path: "hardwares",
+        element: <HardwaresPage />,
       },
     ],
   },

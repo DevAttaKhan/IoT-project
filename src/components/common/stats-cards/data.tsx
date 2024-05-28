@@ -4,6 +4,7 @@ import {
   DizzyIcon,
   ExplodingIcon,
   SickIcon,
+  SquaresIcon,
   UserIcon,
 } from "@/assets/icons";
 
@@ -66,5 +67,36 @@ export const USER_COLLECTION_LIST: IStatsCard[] = [
     description: "Current Site Load",
     color: "bg-[#1D1C1C] ",
     icon: <UserIcon />,
+  },
+];
+
+export const HARDWARE_COLLECTION_LIST: IStatsCard[] = [
+  {
+    name: "Total Hardware",
+    type: "800+",
+    description: "Current Status of site",
+    color: "bg-[#0F5EF9]",
+    icon: <SquaresIcon />,
+  },
+  {
+    name: "Active Hardware",
+    type: "710",
+    description: "Current Power Source",
+    color: "bg-green-500",
+    icon: <SquaresIcon />,
+  },
+  {
+    name: "Locations",
+    type: "20+",
+    description: "Current Battery Backup Available",
+    color: "bg-orange-400 ",
+    icon: <SquaresIcon />,
+  },
+  {
+    name: " Disable Hardware",
+    type: "90",
+    description: "Current Site Load",
+    color: "bg-indigo-950 ",
+    icon: <SquaresIcon />,
   },
 ];

@@ -15,6 +15,7 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
+import { DataTablePagination } from "./pagination-control";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -122,9 +123,9 @@ export function DataTable<TData, TValue>({
           )}
         </tbody>
       </table>
-      {/* <div className="flex justify-end pt-4">
+      <div className="flex justify-end pt-4">
         <DataTablePagination table={table}></DataTablePagination>
-      </div> */}
+      </div>
     </div>
   );
 }

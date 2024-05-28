@@ -11,7 +11,7 @@ import {
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import classNames from "classnames";
 import ProfileAvatar from "@/assets/images/profile-upload.png";
-import { CameraIcon } from "@heroicons/react/24/outline";
+// import { CameraIcon } from "@heroicons/react/24/outline";
 
 const tabClasses =
   "outline-none data-[selected]:text-[#1921FA] cursor-pointer text-xl flex items-center gap-4";

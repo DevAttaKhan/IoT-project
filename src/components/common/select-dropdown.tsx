@@ -13,15 +13,26 @@ type Props = {
   name?: string;
   label?: string;
   icon?: React.ReactNode;
+  buttonClass: string;
   options: { id: number; value: string }[];
 };
 
-export const SelectDropdown = ({ label, options, icon }: Props) => {
+export const SelectDropdown = ({
+  label,
+  options,
+  icon,
+  buttonClass,
+}: Props) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         {label && (
-          <MenuButton className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
+          <MenuButton
+            className={classNames(
+              "inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50",
+              buttonClass
+            )}
+          >
             {label}
             <ChevronDownIcon
               className="-mr-1 h-5 w-5 text-gray-400"

@@ -3,8 +3,11 @@ import { EVENTS_FILTER_OPTIONS, columns, EventData } from "./data";
 import { SelectDropdown } from "@/components/common";
 import { DownloadIcon, SearchIcon, TumbtackIcon } from "@/assets/icons";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { useMemo } from "react";
 
 export const EventsTable = () => {
+  const eventsColumns = useMemo(() => columns({}), []);
+
   return (
     <div className="   w-full bg-white rounded-2xl md:p-8 p-5 ">
       <div className="flex md:flex-row md:gap-0 gap-4  flex-col w-full mb-16 justify-between">
@@ -34,7 +37,7 @@ export const EventsTable = () => {
       </div>
 
       <div className="md:overflow-x-visible overflow-x-auto">
-        <DataTable columns={columns} data={EventData} />
+        <DataTable columns={eventsColumns} data={EventData} />
       </div>
     </div>
   );

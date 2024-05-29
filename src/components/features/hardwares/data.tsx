@@ -8,7 +8,7 @@ export interface IHardware {
   actions: "";
 }
 
-export const columns = (actions: any): ColumnDef<IHardware>[] => [
+export const columns = (): ColumnDef<IHardware>[] => [
   { accessorKey: "chipId", header: "chip ID" },
   { accessorKey: "siteId", header: "SiteId" },
   { accessorKey: "site", header: "Site #" },

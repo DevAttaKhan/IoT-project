@@ -255,7 +255,7 @@ const SearchBar = () => {
     <form className="max-w-md mx-auto">
       <div className="relative">
         <div className="absolute inset-y-0 end-0 flex items-center pe-5 pointer-events-none">
-          <SearchIcon className="w-5" />
+          <SearchIcon />
         </div>
         <input
           type="search"
@@ -305,7 +305,7 @@ const Notifications = () => {
           <div className="border-b pb-2">
             {notifications.map((item, i) => (
               <MenuItem key={item.title + i}>
-                {({ active }: { active: boolean }) => (
+                {() => (
                   <div className="flex gap-x-2">
                     <span className="w-[12px] h-[12px] block bg-blue-700 rounded-full mt-2"></span>
                     <div>

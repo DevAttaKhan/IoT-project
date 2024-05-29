@@ -10,9 +10,9 @@ import { AddHardwareModal } from "./add-hardware-modal";
 
 export const HardwaresTable = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [table, setTable] = useState<Table<IHardware>>();
+  const [_table, setTable] = useState<Table<IHardware>>();
 
-  const sitelocationColumns = useMemo(() => columns({}), []);
+  const sitelocationColumns = useMemo(() => columns(), []);
 
   return (
     <>

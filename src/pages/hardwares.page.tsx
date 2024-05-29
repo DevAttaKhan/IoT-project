@@ -1,9 +1,6 @@
 import { WheelIcon } from "@/assets/icons";
 import { FilterBar, StatsCards } from "@/components/common";
-import {
-  HARDWARE_COLLECTION_LIST,
-  SITE_COLLECTION_LIST,
-} from "@/components/common/stats-cards";
+import { HARDWARE_COLLECTION_LIST } from "@/components/common/stats-cards";
 import {
   BreakdownChart,
   HardwaresTable,

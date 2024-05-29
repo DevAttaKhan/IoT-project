@@ -4,7 +4,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 import { Fragment } from "react";
 
-type Props = { screenName: string; icon?: JSX.Element; hidefilters: boolean };
+type Props = { screenName: string; icon?: JSX.Element; hidefilters?: boolean };
 
 export const FilterBar = ({ screenName, icon, hidefilters }: Props) => {
   return (

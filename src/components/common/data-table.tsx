@@ -88,7 +88,7 @@ export function DataTable<TData, TValue>({
   }, [table]);
 
   //Used to show reset button
-  const isFiltered = table.getState().columnFilters.length > 0;
+  // const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
     <div>

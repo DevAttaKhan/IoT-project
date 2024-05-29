@@ -1,4 +1,3 @@
-import React from "react";
 import { DataTable } from "@/components/common/data-table";
 import { EVENTS_FILTER_OPTIONS, columns, EventData } from "./data";
 import { SelectDropdown } from "@/components/common";
@@ -7,7 +6,7 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useMemo } from "react";
 
 export const EventsTable = () => {
-  const eventsColumns = useMemo(() => columns({}), []);
+  const eventsColumns = useMemo(() => columns(), []);
 
   return (
     <div className="   w-full bg-white rounded-2xl md:p-8 p-5 ">

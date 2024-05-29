@@ -10,15 +10,12 @@ export const UsersTable = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState("Add");
 
-  const handleModal = (id: number) => {
+  const handleModal = (_id: number) => {
     setOpenModal(true);
-    setModalType("Edit")
+    setModalType("Edit");
   };
 
-  const userColumns = useMemo(
-    () => columns({ openModal: handleModal }),
-    []
-  );
+  const userColumns = useMemo(() => columns({ openModal: handleModal }), []);
 
   return (
     <div className="   w-full bg-white rounded-2xl md:p-8 p-5 ">
@@ -34,9 +31,9 @@ export const UsersTable = () => {
           <button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-4 py-4 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
             <SearchIcon />
           </button>
-          <button 
-          className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50"
-          onClick={()=> setOpenModal(true)}
+          <button
+            className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50"
+            onClick={() => setOpenModal(true)}
           >
             <PlusIcon className=" h-6 w-6 text-black" />
           </button>
@@ -47,8 +44,13 @@ export const UsersTable = () => {
       <div className="md:overflow-x-visible overflow-x-auto">
         <DataTable columns={userColumns} data={UserData} />
       </div>
-       {/* add user dialog */}
-      <UserModal isOpen={openModal} setIsOpen={setOpenModal} modalType={modalType} setModalType={setModalType}/>
+      {/* add user dialog */}
+      <UserModal
+        isOpen={openModal}
+        setIsOpen={setOpenModal}
+        modalType={modalType}
+        setModalType={setModalType}
+      />
     </div>
   );
 };

@@ -78,7 +78,7 @@ export const EventData: IEvent[] = [
   },
 ];
 
-export const columns = (actions: any): ColumnDef<IEvent>[] => [
+export const columns = (): ColumnDef<IEvent>[] => [
   {
     accessorKey: "sev",
     header: "SAV",
@@ -118,7 +118,7 @@ export const columns = (actions: any): ColumnDef<IEvent>[] => [
   {
     accessorKey: "action",
     header: "Actions",
-    cell: ({ row }) => {
+    cell: () => {
       return (
         <SelectDropdown
           icon={

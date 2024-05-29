@@ -32,7 +32,7 @@ export const columns = (action: any): ColumnDef<ISiteLocation>[] => [
   {
     accessorKey: "vibrationSensor",
     header: "vibration sensor",
-    cell: ({ row }) => {
+    cell: () => {
       return (
         <>
           <span className="w-[12px] h-[12px] inline-block me-2 bg-green-500 rounded-full"></span>
@@ -44,7 +44,7 @@ export const columns = (action: any): ColumnDef<ISiteLocation>[] => [
   {
     accessorKey: "smartLock",
     header: "vibration sensor",
-    cell: ({ row }) => {
+    cell: () => {
       return (
         <>
           <span className="w-[12px] h-[12px] inline-block me-2 bg-red-600 rounded-full"></span>

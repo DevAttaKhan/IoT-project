@@ -1,5 +1,5 @@
 table {
-  @apply md:mx-6 mx-0 md:w-full w-max table-fixed;
+  @apply md:mx-6 mx-0 md:w-full w-max;
 }
 
 table tr {
@@ -7,11 +7,11 @@ table tr {
 }
 
 table tr th {
-  @apply md:pr-0 pr-4 text-gray-400 tracking-wide font-medium  uppercase text-left pb-2;
+  @apply md:pr-0 pr-4  text-gray-400 tracking-wide font-medium  uppercase text-left pb-2;
 }
 
 table tr td {
-  @apply md:pr-0 pr-4 pt-6 pb-10 font-medium font-normal;
+  @apply px-2 pt-6 pb-10 font-normal;
 }
 
 .primary-button {
@@ -36,6 +36,10 @@ table tr td {
 
 .stat-card:not(:last-child) {
   @apply md:border-r md:border-gray-300;
+}
+
+.select_country {
+  border-radius: 16px !important;
 }
 
 @keyframes rotate-scale-up {

@@ -160,9 +160,9 @@ export const ActiveAlarmColumns: ColumnDef<IAlarm>[] = [
     header: "current status",
     cell: ({ row }) => {
       return (
-        <p className="rounded bg-[#856D60] text-white text-sm px-4 py-1 w-44 ">
+        <button className="rounded bg-[#856D60] text-white text-sm px-4 py-1 w-44 ">
           {row.original.currentStatus}
-        </p>
+        </button>
       );
     },
   },
@@ -203,6 +203,19 @@ export const AlarmHistoryColumns: ColumnDef<IAlarm>[] = [
   {
     accessorKey: "siteId",
     header: "Site ID",
+    cell: ({ row }) => {
+      return (
+        <div
+          style={{
+            minWidth: "0 !important",
+            padding: "0 !important",
+            margin: "0 !important",
+          }}
+        >
+          {row.original.siteId}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "description",
@@ -213,9 +226,9 @@ export const AlarmHistoryColumns: ColumnDef<IAlarm>[] = [
     header: "current status",
     cell: ({ row }) => {
       return (
-        <p className="rounded bg-[#856D60] text-white text-sm px-4 py-1 w-44 ">
+        <button className="rounded bg-[#856D60] text-white text-xs px-4 py-1 w-44 ">
           {row.original.currentStatus}
-        </p>
+        </button>
       );
     },
   },

@@ -11,12 +11,11 @@ import {
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import classNames from "classnames";
 import ProfileAvatar from "@/assets/images/profile-upload.png";
+import { SelectDropdown } from "@/components/common";
 // import { CameraIcon } from "@heroicons/react/24/outline";
 
 const tabClasses =
-  "outline-none data-[selected]:text-[#1921FA] cursor-pointer text-xl flex items-center gap-4";
-const inputClasses = `border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 h-[52px] p-2 placeholder:text-xl outline-none
-`;
+  "outline-none data-[selected]:text-[#1921FA] cursor-pointer  flex items-center gap-4";
 
 export const ProfilePage = () => {
   return (
@@ -75,27 +74,22 @@ export const ProfilePage = () => {
         </TabList>
         <TabPanels
           as="div"
-          className="basis-[70%] bg-white px-10 py-12 rounded-md shadow-sm"
+          className="basis-[70%] bg-white px-10 py-12 rounded-2xl-md shadow-sm"
         >
           <TabPanel>
-            {/* bassic information  */}
             <h1 className="text-2xl mb-8">Basic information</h1>
             <form className="flex flex-col gap-8 ">
-              {/* row 1  */}
               <div className="flex md:flex-row flex-col items-start md:items-center">
-                <label htmlFor="name" className="block basis-[20%] text-xl">
+                <label htmlFor="name" className="block basis-[20%] mb-2 ">
                   Full Name
                 </label>
-                <div className="mt-2 w-full basis-[80%] flex">
+                <div className=" w-full basis-[80%] flex">
                   <input
                     id="name"
                     name="firstName"
                     type="text"
                     autoComplete="text"
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-tl-[10px] rounded-bl-[10px]"
-                    )}
+                    className="w-full  border px-6 py-3 rounded-s-2xl outline-bluebonnet "
                     placeholder="Tony"
                   />
                   <input
@@ -103,166 +97,145 @@ export const ProfilePage = () => {
                     name="firstName"
                     type="text"
                     autoComplete="text"
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-tr-[10px] rounded-br-[10px]"
-                    )}
+                    className="w-full  border px-6 py-3 rounded-e-2xl outline-bluebonnet "
                     placeholder="Nguyen"
                   />
                 </div>
               </div>
-              {/* row 2  */}
               <div className="flex md:flex-row flex-col items-start md:items-center">
-                <label htmlFor="email" className="block basis-[20%] text-xl">
+                <label htmlFor="email" className="block basis-[20%] mb-2 ">
                   Email
                 </label>
-                <div className="mt-2 w-full basis-[80%]">
+                <div className=" w-full basis-[80%]">
                   <input
                     id="email"
                     name="email"
                     type="email"
                     autoComplete="email"
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-[10px]"
-                    )}
+                    className="w-full  border px-6 py-3 rounded-2xl outline-bluebonnet "
                     placeholder="tony@example.com"
                   />
                 </div>
               </div>
-              {/* row 3  */}
               <div className="flex md:flex-row flex-col items-start md:items-center">
-                <label htmlFor="phone" className="block basis-[20%] text-xl">
+                <label htmlFor="phone" className="block basis-[20%] mb-2 ">
                   Phone
                 </label>
-                <div className="mt-2 w-full basis-[80%]">
+                <div className=" w-full basis-[80%]">
                   <input
                     id="phone"
                     name="phone"
                     type="text"
-                    // autoComplete=""
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-[10px]"
-                    )}
+                    className="w-full  border px-6 py-3 rounded-2xl outline-bluebonnet "
                     placeholder="(342)3934 3445 33"
                   />
                 </div>
               </div>
-              {/* row 4  */}
               <div className="flex md:flex-row flex-col items-start md:items-center">
                 <label
                   htmlFor="organization"
-                  className="block basis-[20%] text-xl"
+                  className="block basis-[20%] mb-2 "
                 >
                   Organization
                 </label>
-                <div className="mt-2 w-full basis-[80%]">
+                <div className=" w-full basis-[80%]">
                   <input
                     id="organization"
                     name="organization"
                     type="text"
-                    // autoComplete=""
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-[10px]"
-                    )}
+                    className="w-full  border px-6 py-3 rounded-2xl outline-bluebonnet "
                     placeholder="Client Care"
                   />
                 </div>
               </div>
-              {/* row 5  */}
               <div className="flex md:flex-row flex-col items-start md:items-center">
                 <label
                   htmlFor="departement"
-                  className="block basis-[20%] text-xl"
+                  className="block basis-[20%] mb-2 "
                 >
                   Department
                 </label>
-                <div className="mt-2 w-full basis-[80%]">
+                <div className=" w-full basis-[80%]">
                   <input
                     id="departement"
                     name="departement"
                     type="text"
-                    // autoComplete=""
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-[10px]"
-                    )}
+                    className="w-full  border px-6 py-3 rounded-2xl outline-bluebonnet "
                     placeholder="Your Department"
                   />
                 </div>
               </div>
-              {/* row 6  */}
-              <div className="flex md:flex-row flex-col items-start md:items-center">
-                <label htmlFor="location" className="block basis-[20%] text-xl">
+              <div className="flex md:flex-row flex-col items-start md:items-start mb-2">
+                <label
+                  htmlFor="location"
+                  className="block basis-[20%]  mb-2  md:pt-3"
+                >
                   Location
                 </label>
-                <div className="mt-2 w-full basis-[80%]">
-                  <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-[10px] bg-white"
-                    )}
-                  >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
-                  </select>
+                <div className="  w-full basis-[80%]">
+                  <SelectDropdown
+                    label="Select Country"
+                    options={[
+                      { id: 1, value: "United States" },
+                      { id: 2, value: "Canada" },
+                      { id: 3, value: "Egnland" },
+                    ]}
+                    containerClass="w-full mb-5 "
+                    buttonClass="rounded-2xl  justify-between px-6  select_country "
+                    itemsContainerClass="w-full "
+                  />
                   <input
                     id="state"
                     name="state"
                     type="text"
-                    // autoComplete=""
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-[10px]  mt-4"
-                    )}
+                    className="w-full mb-5 border px-6 py-3 rounded-2xl outline-bluebonnet "
+                    placeholder="City"
+                  />
+                  <input
+                    id="state"
+                    name="state"
+                    type="text"
+                    className="w-full  border px-6 py-3 rounded-2xl outline-bluebonnet "
                     placeholder="State"
                   />
                 </div>
               </div>
-              {/* row 7  */}
               <div className="flex md:flex-row flex-col items-start md:items-center">
-                <label htmlFor="address" className="block basis-[20%] text-xl">
+                <label htmlFor="address" className="block basis-[20%] mb-2">
                   Address
                 </label>
-                <div className="mt-2 w-full basis-[80%]">
+                <div className=" w-full basis-[80%]">
                   <input
                     id="address"
                     name="address"
                     type="text"
                     // autoComplete=""
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-[10px]"
-                    )}
+                    className="w-full  border px-6 py-3 rounded-2xl outline-bluebonnet "
                     placeholder="Your address"
                   />
                 </div>
               </div>
-              {/* row 5  */}
               <div className="flex md:flex-row flex-col items-start md:items-center">
-                <label htmlFor="zipcode" className="block basis-[20%] text-xl">
+                <label htmlFor="zipcode" className="block basis-[20%] mb-2">
                   Zip code
                 </label>
-                <div className="mt-2 w-full basis-[80%]">
+                <div className=" w-full basis-[80%]">
                   <input
                     id="departement"
                     name="departement"
                     type="text"
                     // autoComplete=""
-                    className={classNames(
-                      inputClasses,
-                      "block w-full rounded-[10px]"
-                    )}
+                    className="w-full  border px-6 py-3 rounded-2xl outline-bluebonnet "
                     placeholder="480000"
                   />
                 </div>
               </div>
+
+              <input
+                type="submit"
+                value="Save Changes"
+                className=" px-8 py-3 rounded bg-bluebonnet text-white max-w-max ml-auto cursor-pointer hover:bg-opacity-70 "
+              />
             </form>
           </TabPanel>
           <TabPanel>Password section</TabPanel>

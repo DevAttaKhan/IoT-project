@@ -37,7 +37,7 @@ export const AlarmHistoryTable = () => {
         </div>
       </div>
 
-      <div className=" overflow-x-auto text-sm pb-4">
+      <div className=" overflow-x-auto text-xs pb-4">
         <DataTable columns={AlarmHistoryColumns} data={AlarmData} />
       </div>
     </div>

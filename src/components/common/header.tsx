@@ -1,6 +1,8 @@
 import { Fragment } from "react";
 import {
   Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
   Menu,
   MenuButton,
   MenuItem,
@@ -11,6 +13,8 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 // IMAGES
 import Logo from "../../assets/images/logo.png";
 import UserIcon from "../../assets/images/user.png";
+import { MoonIcon, SearchIcon, SunIcon } from "@/assets/icons";
+import { Link } from "react-router-dom";
 
 const user = {
   name: "Tom Cook",
@@ -26,7 +30,7 @@ const navigation = [
   { name: "Reports", href: "#", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
+  { name: "Your Profile", href: "profile" },
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "#" },
 ];
@@ -73,99 +77,8 @@ export const Header = () => {
                   </div>
                   <div className="hidden md:flex ">
                     <div className="ml-4 flex items-center gap-5  pe-8  border-e-2 me-5 border-slate-700 md:ml-6">
-                      {/* Profile dropdown */}
-                      <form className="max-w-md mx-auto">
-                        <div className="relative">
-                          <div className="absolute inset-y-0 end-0 flex items-center pe-5 pointer-events-none">
-                            <svg
-                              className="w-5 h-5 text-purple-950"
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 20 20"
-                            >
-                              <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                              />
-                            </svg>
-                          </div>
-                          <input
-                            type="search"
-                            id="default-search"
-                            className="block w-[300px] p-4 py-5 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 "
-                          />
-                        </div>
-                      </form>
-                      <Menu as="div" className="relative ml-3">
-                        <div>
-                          <MenuButton className="relative flex max-w-xs items-center rounded-full text-gray-400 text-sm focus:outline-none ">
-                            <span className="absolute -inset-1.5" />
-                            <span className="sr-only">Open user menu</span>
-                            <div className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white  rounded-lg focus:outline-none d">
-                              <BellIcon className="h-7 w-7 text-white" />
-                              <span className="sr-only">Notifications</span>
-                              <div className="absolute top-0 right-0 inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-700 border-2 border-white rounded-full">
-                                20
-                              </div>
-                            </div>
-                          </MenuButton>
-                        </div>
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
-                        >
-                          <MenuItems className="absolute right-0 z-10 mt-2 w-[280px] origin-top-right rounded-md bg-white py-1 shadow-lg focus:outline-none p-4">
-                            <div className="flex justify-between border-b pt-2 pb-2 mb-4">
-                              <h4 className="text-black text-md font-semibold">
-                                Notification
-                              </h4>
-                              <button
-                                type="button"
-                                className="text-[10px] font-bold text-blue-700"
-                              >
-                                CLEAR ALL
-                              </button>
-                            </div>
-                            <div className="border-b pb-2">
-                              {notifications.map((item, i) => (
-                                <MenuItem key={item.title + i}>
-                                  {({ active }: { active: boolean }) => (
-                                    <div className="flex gap-x-2">
-                                      <span className="w-[12px] h-[12px] block bg-blue-700 rounded-full mt-2"></span>
-                                      <div>
-                                        <p className="text-sm font-semibold mb-1">
-                                          {item.title}
-                                        </p>
-                                        <p className="text-[11px] mb-2 text-slate-500">
-                                          {item.title}
-                                        </p>
-                                        <p className="text-sm font-semibold mb-1">
-                                          {item.dateAndTime}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  )}
-                                </MenuItem>
-                              ))}
-                            </div>
-                            <button
-                              type="button"
-                              className="py-2 text-[10px] w-full font-bold text-blue-700 text-center"
-                            >
-                              VIEW ALL
-                            </button>
-                          </MenuItems>
-                        </Transition>
-                      </Menu>
+                      <SearchBar />
+                      <Notifications />
                       <Menu as="div" className="relative ml-3">
                         <div>
                           <MenuButton className="relative flex max-w-xs items-center rounded-full  text-sm focus:outline-none">
@@ -217,15 +130,15 @@ export const Header = () => {
                                       />
                                     </svg>
 
-                                    <a
-                                      href={item.href}
+                                    <Link
+                                      to={item.href}
                                       className={classNames(
                                         active ? "bg-gray-100" : "",
                                         "block text-[15px] text-gray-700 font-semibold "
                                       )}
                                     >
                                       {item.name}
-                                    </a>
+                                    </Link>
                                   </div>
                                 )}
                               </MenuItem>
@@ -236,37 +149,17 @@ export const Header = () => {
                     </div>
                     <div className="flex">
                       <button type="button">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="size-8 text-white"
-                        >
-                          <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
-                        </svg>
+                        <SunIcon />
                       </button>
                       <button type="button">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="size-7 ms-3 text-white"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                          />
-                        </svg>
+                        <MoonIcon />
                       </button>
                     </div>
                   </div>
 
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <DisclosureButton className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-0.5" />
                       <span className="sr-only">Open main menu</span>
                       {open ? (
@@ -280,15 +173,15 @@ export const Header = () => {
                           aria-hidden="true"
                         />
                       )}
-                    </Disclosure.Button>
+                    </DisclosureButton>
                   </div>
                 </div>
               </div>
 
-              <Disclosure.Panel className="md:hidden">
+              <DisclosurePanel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                   {navigation.map((item) => (
-                    <Disclosure.Button
+                    <DisclosureButton
                       key={item.name}
                       as="a"
                       href={item.href}
@@ -301,7 +194,7 @@ export const Header = () => {
                       aria-current={item.current ? "page" : undefined}
                     >
                       {item.name}
-                    </Disclosure.Button>
+                    </DisclosureButton>
                   ))}
                 </div>
                 <div className="border-t border-gray-700 pb-3 pt-4">
@@ -332,18 +225,18 @@ export const Header = () => {
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (
-                      <Disclosure.Button
+                      <DisclosureButton
                         key={item.name}
                         as="a"
                         href={item.href}
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                       >
                         {item.name}
-                      </Disclosure.Button>
+                      </DisclosureButton>
                     ))}
                   </div>
                 </div>
-              </Disclosure.Panel>
+              </DisclosurePanel>
             </>
           )}
         </Disclosure>
@@ -354,5 +247,89 @@ export const Header = () => {
         </main>
       </div>
     </>
+  );
+};
+
+const SearchBar = () => {
+  return (
+    <form className="max-w-md mx-auto">
+      <div className="relative">
+        <div className="absolute inset-y-0 end-0 flex items-center pe-5 pointer-events-none">
+          <SearchIcon className="w-5" />
+        </div>
+        <input
+          type="search"
+          id="default-search"
+          className="block w-[300px] p-4 py-5 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 "
+        />
+      </div>
+    </form>
+  );
+};
+
+const Notifications = () => {
+  return (
+    <Menu as="div" className="relative ml-3">
+      <div>
+        <MenuButton className="relative flex max-w-xs items-center rounded-full text-gray-400 text-sm focus:outline-none ">
+          <span className="absolute -inset-1.5" />
+          <span className="sr-only">Open user menu</span>
+          <div className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white  rounded-lg focus:outline-none d">
+            <BellIcon className="h-7 w-7 text-white" />
+            <span className="sr-only">Notifications</span>
+            <div className="absolute top-0 right-0 inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-700 border-2 border-white rounded-full">
+              20
+            </div>
+          </div>
+        </MenuButton>
+      </div>
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <MenuItems className="absolute right-0 z-10 mt-2 w-[280px] origin-top-right rounded-md bg-white py-1 shadow-lg focus:outline-none p-4">
+          <div className="flex justify-between border-b pt-2 pb-2 mb-4">
+            <h4 className="text-black text-md font-semibold">Notification</h4>
+            <button
+              type="button"
+              className="text-[10px] font-bold text-blue-700"
+            >
+              CLEAR ALL
+            </button>
+          </div>
+          <div className="border-b pb-2">
+            {notifications.map((item, i) => (
+              <MenuItem key={item.title + i}>
+                {({ active }: { active: boolean }) => (
+                  <div className="flex gap-x-2">
+                    <span className="w-[12px] h-[12px] block bg-blue-700 rounded-full mt-2"></span>
+                    <div>
+                      <p className="text-sm font-semibold mb-1">{item.title}</p>
+                      <p className="text-[11px] mb-2 text-slate-500">
+                        {item.title}
+                      </p>
+                      <p className="text-sm font-semibold mb-1">
+                        {item.dateAndTime}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </MenuItem>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="py-2 text-[10px] w-full font-bold text-blue-700 text-center"
+          >
+            VIEW ALL
+          </button>
+        </MenuItems>
+      </Transition>
+    </Menu>
   );
 };

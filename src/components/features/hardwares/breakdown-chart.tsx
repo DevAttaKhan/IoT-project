@@ -51,7 +51,7 @@ export function BreakdownChart() {
       datasets: [
         {
           label: "Dataset 1",
-          data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+          data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
           backgroundColor: "#584AC7",
           borderRadius: Number.MAX_VALUE,
           borderSkipped: false,

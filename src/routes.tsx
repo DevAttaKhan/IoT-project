@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Link, createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "@/components/common/protected-route";
 import LoginPage from "./pages/login.page";
 import ResetPasswordPage from "./pages/reset-password.page";
@@ -14,7 +14,7 @@ import {
 export const routes = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Link to="dashboard">click to go to dashboard</Link>,
   },
   {
     path: "/login",

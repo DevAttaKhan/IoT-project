@@ -8,7 +8,7 @@ export const ToolboxIcon = () => {
       viewBox="0 0 24 21.333"
     >
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clipPath">
           <rect
             id="Rectangle_506"
             data-name="Rectangle 506"
@@ -18,7 +18,7 @@ export const ToolboxIcon = () => {
           />
         </clipPath>
       </defs>
-      <g id="Group_168" data-name="Group 168" clipPath="url(#clip-path)">
+      <g id="Group_168" data-name="Group 168" clipPath="url(#clipPath)">
         <path
           id="Path_2012"
           data-name="Path 2012"

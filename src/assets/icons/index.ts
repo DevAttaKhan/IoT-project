@@ -33,3 +33,6 @@ export * from './circle-cross.icon';
 export * from './wheel.icon'
 export * from './squares.icon'
 export * from './toolbox.icon'
+export * from './calendar.icon'
+export * from './moon.icon'
+export * from './sun.icon'

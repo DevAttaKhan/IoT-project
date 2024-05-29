@@ -1,3 +1,4 @@
+import React from "react";
 import { DataTable } from "@/components/common/data-table";
 import { EVENTS_FILTER_OPTIONS, columns, EventData } from "./data";
 import { SelectDropdown } from "@/components/common";

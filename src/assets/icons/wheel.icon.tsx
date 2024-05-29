@@ -8,7 +8,7 @@ export const WheelIcon = () => {
       viewBox="0 0 24 24"
     >
       <defs>
-        <clipPath id="clip-path">
+        <clipPath id="clipPath">
           <rect
             id="Rectangle_505"
             data-name="Rectangle 505"
@@ -18,7 +18,7 @@ export const WheelIcon = () => {
           />
         </clipPath>
       </defs>
-      <g id="Group_166" data-name="Group 166" clipPath="url(#clip-path)">
+      <g id="Group_166" data-name="Group 166" clipPath="url(#clipPath)">
         <path
           id="Path_2011"
           data-name="Path 2011"

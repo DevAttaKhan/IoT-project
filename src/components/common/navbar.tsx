@@ -1,11 +1,17 @@
-import { BoxIcon, FileIcon, GridIcon, ProfileIcon } from "@/assets/icons";
+import {
+  BoxIcon,
+  FileIcon,
+  GearsIcon,
+  GridIcon,
+  ProfileIcon,
+} from "@/assets/icons";
 import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const IconMap = {
   dashboard: <GridIcon />,
   hardwares: <BoxIcon />,
-  profile: <ProfileIcon />,
+  users: <ProfileIcon />,
   alarms: <FileIcon />,
 };
 
@@ -45,11 +51,9 @@ export const Navbar = () => {
                 className="flex items-center justify-center w-full h-full bg-blue-800 rounded-full  "
               >
                 <span ref={activeRouteRef}>
-                  {
-                    IconMap[
-                      location.pathname.replace("/", "") as keyof typeof IconMap
-                    ]
-                  }
+                  {IconMap[
+                    location.pathname.replace("/", "") as keyof typeof IconMap
+                  ] || <GearsIcon />}
                 </span>
               </button>
             </div>

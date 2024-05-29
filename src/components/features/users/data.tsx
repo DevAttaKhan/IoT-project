@@ -7,7 +7,7 @@ export const EVENTS_FILTER_OPTIONS = [
   { id: 4, value: "Option 4" },
 ];
 
-export interface IEvent {
+export interface IUser {
   id?: string;
   name: string;
   location: string;
@@ -16,7 +16,7 @@ export interface IEvent {
   action: string;
 }
 
-export const EventData: IEvent[] = [
+export const UserData: IUser[] = [
   {
     name: "Stephan Orchid",
     location: "216 Maxine Garden",
@@ -129,7 +129,7 @@ export const EventData: IEvent[] = [
   },
 ];
 
-export const columns: ColumnDef<IEvent>[] = [
+export const columns = (action: any): ColumnDef<IUser>[] => [
   {
     accessorKey: "name",
     header: "NAME",
@@ -172,11 +172,16 @@ export const columns: ColumnDef<IEvent>[] = [
   {
     accessorKey: "action",
     header: "Actions",
-    cell: () => {
+    cell: ({row}) => {
       return (
         <div className="flex gap-3">
-          <CircleEditIcon />
-          <CircleCrossIcon />
+          {/* we will use id instead of name  */}
+          <div className="cursor-pointer" onClick={() => action.openModal(row.original.name)}> 
+            <CircleEditIcon />
+          </div>
+          <div className="cursor-pointer">
+            <CircleCrossIcon />
+          </div>
         </div>
       );
     },

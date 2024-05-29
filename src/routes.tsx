@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "@/components/common/protected-route";
 import { DashboardPage, EventsPage, ProfilePage, HardwaresPage } from "./pages";
 import { UsersPage } from "./pages/users.page";
+import LoginPage from "./pages/login.page";
+import ResetPasswordPage from "./pages/reset-password.page";
 
 export const routes = createBrowserRouter([
   {
@@ -10,7 +12,11 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <h1>Login Here</h1>,
+    element: <LoginPage />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPasswordPage />,
   },
   {
     element: <ProtectedRoute />,

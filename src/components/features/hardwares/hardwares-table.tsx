@@ -1,23 +1,20 @@
 import { SelectDropdown } from "@/components/common";
 import { FILTER_OPTIONS } from "../dashboard/data";
-import { HardwareData, columns } from "./data";
-import { LocationIcon, SearchIcon, ToolboxIcon } from "@/assets/icons";
+import { HardwareData, IHardware, columns } from "./data";
+import { SearchIcon, ToolboxIcon } from "@/assets/icons";
 import { DataTable } from "@/components/common";
 import { useMemo, useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import { Table } from "@tanstack/react-table";
+import { AddHardwareModal } from "./add-hardware-modal";
 
 export const HardwaresTable = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [table, setTable] = useState<Table<IHardware>>();
 
-  const handleModal = (id: string) => {
-    console.log(id);
-    setOpenModal(true);
-  };
+  console.log(table?.getColumn("site"));
 
-  const sitelocationColumns = useMemo(
-    () => columns({ openModal: handleModal }),
-    []
-  );
+  const sitelocationColumns = useMemo(() => columns({}), []);
 
   return (
     <>
@@ -32,7 +29,10 @@ export const HardwaresTable = () => {
             <button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-4 py-4 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
               <SearchIcon />
             </button>
-            <button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
+            <button
+              onClick={() => setOpenModal(true)}
+              className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50"
+            >
               <PlusIcon className=" h-6 w-6 text-black" />
             </button>
             <SelectDropdown label="Filter" options={FILTER_OPTIONS} />
@@ -40,9 +40,15 @@ export const HardwaresTable = () => {
         </div>
 
         <div className="md:overflow-x-visible overflow-x-auto">
-          <DataTable columns={sitelocationColumns} data={HardwareData} />
+          <DataTable
+            columns={sitelocationColumns}
+            data={HardwareData}
+            setTable={setTable}
+          />
         </div>
       </div>
+
+      <AddHardwareModal isOpen={openModal} setIsOpen={setOpenModal} />
     </>
   );
 };

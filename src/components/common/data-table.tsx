@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   ColumnDef,
@@ -12,6 +12,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   SortingState,
+  Table,
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
@@ -20,12 +21,14 @@ import { DataTablePagination } from "./pagination-control";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  setTable?: (table: Table<TData>) => void;
   // table: TanstackTable<TData>; //HERE
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  setTable,
 }: DataTableProps<TData, TValue>) {
   //STATES:
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -78,6 +81,11 @@ export function DataTable<TData, TValue>({
       },
     },
   });
+
+  useEffect(() => {
+    if (!table) return;
+    setTable && setTable(table);
+  }, [table]);
 
   //Used to show reset button
   const isFiltered = table.getState().columnFilters.length > 0;

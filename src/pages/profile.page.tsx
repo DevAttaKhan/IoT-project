@@ -25,8 +25,8 @@ export const ProfilePage = () => {
         <TabList as="div" className="basis-[30%] flex flex-col gap-8 mb-8">
           <div className="mb-4">
             <div className="relative">
-            <img src={ProfileAvatar} alt=""/>
-            {/* <CameraIcon className="absolute rigth-10 bottom-10 w-10"/> */}
+              <img src={ProfileAvatar} alt="" />
+              {/* <CameraIcon className="absolute rigth-10 bottom-10 w-10"/> */}
             </div>
             <h1 className="text-3xl">Profile Name</h1>
             <span className="text-sm text-slate-400">tony@example.com</span>

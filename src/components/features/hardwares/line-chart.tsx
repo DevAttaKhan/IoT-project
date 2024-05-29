@@ -60,9 +60,7 @@ export function BreakdownLineChart() {
       datasets: [
         {
           label: "Dataset 1",
-          data: labels.map(() =>
-            faker.datatype.number({ min: -1000, max: 1000 })
-          ),
+          data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
           borderColor: "#584AC7",
           tension: 0.4,
         },

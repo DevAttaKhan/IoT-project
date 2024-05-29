@@ -12,8 +12,6 @@ export const HardwaresTable = () => {
   const [openModal, setOpenModal] = useState(false);
   const [table, setTable] = useState<Table<IHardware>>();
 
-  console.log(table?.getColumn("site"));
-
   const sitelocationColumns = useMemo(() => columns({}), []);
 
   return (

@@ -50,7 +50,7 @@ export function BarChart({ label, color }: Props) {
       datasets: [
         {
           label: "Dataset 1",
-          data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+          data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
           backgroundColor: color || "#02D0DF",
           borderRadius: Number.MAX_VALUE,
           borderSkipped: false,

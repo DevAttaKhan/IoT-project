@@ -9,7 +9,7 @@ type Props = { screenName: string; icon?: JSX.Element; hidefilters?: boolean };
 export const FilterBar = ({ screenName, icon, hidefilters }: Props) => {
   return (
     <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between md:mb-10 mb-7">
-      <h2 className=" text-3xl text-gray-700 font-bold flex gap-x-2 items-center">
+      <h2 className=" text-xl md:text-2xl lg:text-3xl text-gray-700 font-bold flex gap-x-2 items-center">
         {icon ? icon : <GlobIcon />}
         {screenName || "Site Collection"}
       </h2>

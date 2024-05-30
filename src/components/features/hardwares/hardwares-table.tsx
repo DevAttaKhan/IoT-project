@@ -7,12 +7,22 @@ import { useMemo, useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { Table } from "@tanstack/react-table";
 import { AddHardwareModal } from "./add-hardware-modal";
+import WarningPrompt from "@/components/common/warning-prompt";
 
 export const HardwaresTable = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
   const [_table, setTable] = useState<Table<IHardware>>();
 
-  const sitelocationColumns = useMemo(() => columns(), []);
+  const handleEdit = (row: IHardware) => {
+    console.log(row);
+    setOpenModal(true);
+  };
+
+  const hardareColumns = useMemo(
+    () => columns({ handleEdit, promptWarning: setShowWarning }),
+    []
+  );
 
   return (
     <>
@@ -39,7 +49,7 @@ export const HardwaresTable = () => {
 
         <div className="md:overflow-x-visible overflow-x-auto">
           <DataTable
-            columns={sitelocationColumns}
+            columns={hardareColumns}
             data={HardwareData}
             setTable={setTable}
           />
@@ -47,6 +57,12 @@ export const HardwaresTable = () => {
       </div>
 
       <AddHardwareModal isOpen={openModal} setIsOpen={setOpenModal} />
+      <WarningPrompt
+        isOpen={showWarning}
+        setIsOpen={setShowWarning}
+        title="hardware deletion confirmation"
+        description="Are you sure about deleting this hardware"
+      />
     </>
   );
 };

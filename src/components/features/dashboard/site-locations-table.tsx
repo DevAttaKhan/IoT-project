@@ -21,26 +21,20 @@ export const SiteLocationTable = () => {
   return (
     <>
       <div className=" lg:w-2/3 w-full bg-white rounded-2xl md:p-8 p-5 ">
-        <div className="flex md:flex-row md:gap-0 gap-4  flex-col w-full mb-16 justify-between">
-          <h2 className="font-bold text-2xl text-gray-700 flex gap-x-2 items-center">
+        <div className="flex md:flex-row md:gap-0 gap-4   w-full mb-16 justify-between">
+          <h2 className="font-bold text-lg md:text-xl lg:text-2xl text-gray-700 flex gap-x-2 items-center">
             <LocationIcon />
             Site Locations
           </h2>
 
-          <div className="flex flex-wrap md:flex-nowrap gap-3 items-center gap-x-2">
-            <button className="inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-4 py-4 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50">
-              <SearchIcon />
-            </button>
-
-            <SelectDropdown label="Filter" options={FILTER_OPTIONS} />
-            <SelectDropdown label="Filter" options={FILTER_OPTIONS} />
-            <SelectDropdown label="Filter" options={FILTER_OPTIONS} />
-          </div>
+          <button className=" w-[45px] h-[45px] rounded border grid place-content-center hover:bg-gray-50 transition ">
+            <SearchIcon />
+          </button>
         </div>
         <div className="mb-28">
           <MapSvg />
         </div>
-        <div className="md:overflow-x-visible overflow-x-auto">
+        <div className="md:overflow-x-visible overflow-x-auto pb-4">
           <DataTable columns={sitelocationColumns} data={siteLocations} />
         </div>
       </div>

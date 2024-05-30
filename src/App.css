@@ -1,3 +1,13 @@
+.LOGO img {
+  width: clamp(100px, 8.177vw, 157px);
+  height: auto;
+}
+
+.AVATAR img {
+  width: clamp(30px, 3.333vw, 50px);
+  height: auto;
+}
+
 table {
   @apply md:mx-6 mx-0 md:w-full w-max;
 }

@@ -43,7 +43,7 @@ export const columns = (action: any): ColumnDef<ISiteLocation>[] => [
   },
   {
     accessorKey: "smartLock",
-    header: "vibration sensor",
+    header: "smart lcok",
     cell: () => {
       return (
         <>

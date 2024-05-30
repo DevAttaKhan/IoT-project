@@ -1,4 +1,5 @@
 import { CircleCrossIcon, CircleEditIcon } from "@/assets/icons";
+import { faker } from "@faker-js/faker";
 import { ColumnDef } from "@tanstack/react-table";
 
 export interface IHardware {
@@ -10,8 +11,20 @@ export interface IHardware {
 
 export const columns = (action: any): ColumnDef<IHardware>[] => [
   { accessorKey: "chipId", header: "chip ID" },
-  { accessorKey: "siteId", header: "SiteId" },
-  { accessorKey: "site", header: "Site #" },
+  {
+    accessorKey: "siteId",
+    header: "SiteId",
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+  },
+  {
+    accessorKey: "site",
+    header: "Site #",
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+  },
   {
     accessorKey: "action",
     header: "Actions",
@@ -30,101 +43,12 @@ export const columns = (action: any): ColumnDef<IHardware>[] => [
   },
 ];
 
-export const HardwareData: IHardware[] = [
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-  {
-    chipId: "HAU1724Y",
-    siteId: "HAU1724Y",
-    site: "216 Maxine Garden",
-    actions: "",
-  },
-];
+export const HardwareData: IHardware[] = Array.from(
+  { length: 13 },
+  (_, i) => i + 1
+).map((el) => ({
+  chipId: faker.string.alphanumeric(6),
+  siteId: faker.string.alphanumeric(6),
+  site: faker.location.city(),
+  actions: "",
+}));

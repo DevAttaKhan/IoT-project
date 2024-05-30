@@ -36,7 +36,7 @@ export const SelectDropdown = ({
         {label && (
           <MenuButton
             className={classNames(
-              "inline-flex w-full border justify-center gap-x-1.5 rounded-md bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50",
+              "rounded-md inline-flex w-full border justify-center gap-x-1.5  bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50",
               buttonClass
             )}
           >
@@ -71,15 +71,14 @@ export const SelectDropdown = ({
               return (
                 <MenuItem key={i}>
                   {({ active }: { active: boolean }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
-                      )}
+                    <div
+                      className={classNames("block px-4 py-2 text-sm w-full", {
+                        "bg-gray-100 text-gray-900": active,
+                        "text-gray-700": !active,
+                      })}
                     >
                       {el.value}
-                    </a>
+                    </div>
                   )}
                 </MenuItem>
               );

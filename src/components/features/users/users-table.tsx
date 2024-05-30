@@ -5,17 +5,22 @@ import { ChartIcon, SearchIcon } from "@/assets/icons";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useMemo, useState } from "react";
 import { UserModal } from "./user-modal.tsx";
+import WarningPrompt from "@/components/common/warning-prompt.tsx";
 
 export const UsersTable = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState("Add");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleModal = (_id: number) => {
     setOpenModal(true);
     setModalType("Edit");
   };
 
-  const userColumns = useMemo(() => columns({ openModal: handleModal }), []);
+  const userColumns = useMemo(
+    () => columns({ openModal: handleModal, onDelete: setIsDeleting }),
+    []
+  );
 
   return (
     <div className="   w-full bg-white rounded-2xl md:p-8 p-5 ">
@@ -51,6 +56,7 @@ export const UsersTable = () => {
         modalType={modalType}
         setModalType={setModalType}
       />
+      <WarningPrompt isOpen={isDeleting} setIsOpen={setIsDeleting} />
     </div>
   );
 };

@@ -172,14 +172,17 @@ export const columns = (action: any): ColumnDef<IUser>[] => [
   {
     accessorKey: "action",
     header: "Actions",
-    cell: ({row}) => {
+    cell: ({ row }) => {
       return (
         <div className="flex gap-3">
           {/* we will use id instead of name  */}
-          <div className="cursor-pointer" onClick={() => action.openModal(row.original.name)}> 
+          <div
+            className="cursor-pointer"
+            onClick={() => action.openModal(row.original.name)}
+          >
             <CircleEditIcon />
           </div>
-          <div className="cursor-pointer">
+          <div className="cursor-pointer" onClick={() => action.onDelete(true)}>
             <CircleCrossIcon />
           </div>
         </div>

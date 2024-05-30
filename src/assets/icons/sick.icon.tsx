@@ -9,7 +9,7 @@ export const SickIcon = () => {
     >
       <defs>
         <pattern
-          id="pattern"
+          id="pattern4"
           preserveAspectRatio="xMidYMid slice"
           width="100%"
           height="100%"
@@ -27,7 +27,7 @@ export const SickIcon = () => {
         data-name="040-sick"
         width="18"
         height="18"
-        fill="url(#pattern)"
+        fill="url(#pattern4)"
       />
     </svg>
   );

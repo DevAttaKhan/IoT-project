@@ -9,7 +9,7 @@ export const DizzyIcon = () => {
     >
       <defs>
         <pattern
-          id="pattern"
+          id="pattern2"
           preserveAspectRatio="xMidYMid slice"
           width="100%"
           height="100%"
@@ -27,7 +27,7 @@ export const DizzyIcon = () => {
         data-name="030-dizzy"
         width="18"
         height="18"
-        fill="url(#pattern)"
+        fill="url(#pattern2)"
       />
     </svg>
   );

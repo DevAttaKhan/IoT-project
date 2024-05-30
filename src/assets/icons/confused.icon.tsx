@@ -9,7 +9,7 @@ export const ConfusedIcon = () => {
     >
       <defs>
         <pattern
-          id="pattern"
+          id="pattern3"
           preserveAspectRatio="xMidYMid slice"
           width="100%"
           height="100%"
@@ -27,7 +27,7 @@ export const ConfusedIcon = () => {
         data-name="022-confused"
         width="18"
         height="18"
-        fill="url(#pattern)"
+        fill="url(#pattern3)"
       />
     </svg>
   );

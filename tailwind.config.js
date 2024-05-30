@@ -6,6 +6,7 @@ export default {
       colors: {
         "dark-gray": "#A8A8A8",
         bluebonnet: "#1921FA",
+        "cetacean-blue": "#06094F",
       },
     },
   },

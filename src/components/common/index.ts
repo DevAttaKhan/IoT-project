@@ -1,4 +1,4 @@
-export * from './header'
+export * from './header/header'
 export * from './navbar'
 export * from './modal'
 export * from './filter-bar'

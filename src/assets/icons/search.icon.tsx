@@ -2,9 +2,10 @@ export const SearchIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="15.026"
-      height="14.967"
-      viewBox="0 0 15.026 14.967"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="currentColor"
     >
       <path
         id="search_icon"

@@ -20,7 +20,7 @@ export const Modal = ({ children, isOpen, widthClass, onClose }: Props) => {
       <Transition appear show={isOpen}>
         <Dialog
           as="div"
-          className="relative z-10 focus:outline-none "
+          className="relative z-50 focus:outline-none "
           onClose={onClose}
         >
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto ">

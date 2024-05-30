@@ -24,8 +24,11 @@ const WarningPrompt = ({ isOpen, setIsOpen }: Props) => {
           <button className="w-[88px] py-3 rounded bg-bluebonnet text-white text-sm">
             Yes
           </button>
-          <button className="w-[88px] py-3 rounded bg-[#6E6E6E] text-white text-sm">
-            Yes
+          <button
+            className="w-[88px] py-3 rounded bg-[#6E6E6E] text-white text-sm"
+            onClick={() => setIsOpen(false)}
+          >
+            No
           </button>
         </div>
       </div>

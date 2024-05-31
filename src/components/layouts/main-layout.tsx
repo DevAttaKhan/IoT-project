@@ -7,7 +7,7 @@ export const MainLayout = ({ children }: Props) => {
   return (
     <div className="min-h-screen  bg-gray-100 pb-44">
       <Header />
-      <div className="p-6 max-w-[1360px] mx-auto">
+      <div className="p-5 lg:p-6 max-w-[1360px] mx-auto">
         {children}
         <Navbar />
       </div>

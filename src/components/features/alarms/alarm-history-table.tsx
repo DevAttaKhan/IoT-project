@@ -1,15 +1,13 @@
-import { CalendarIcon, SearchIcon } from "@/assets/icons";
+import { CalendarIcon } from "@/assets/icons";
 import {
   DataTable,
-  SelectDropdown,
   TableButton,
   TableDropdownFilter,
   TableSearchbar,
 } from "@/components/common";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import { EVENTS_FILTER_OPTIONS } from "../events";
 import { AlarmData, AlarmHistoryColumns, IAlarm } from "./data";
-import { getFilterValues } from "@/lib/utils";
+import { SearchByName, getFilterValues } from "@/lib/utils";
 import { useState } from "react";
 import { Table } from "@tanstack/react-table";
 
@@ -24,15 +22,19 @@ export const AlarmHistoryTable = () => {
         </h2>
 
         <div className="flex flex-wrap md:flex-nowrap gap-3 items-center gap-x-2 self-end">
-          <TableSearchbar />
+          <TableSearchbar
+            onChange={(value) =>
+              SearchByName(value, table?.getColumn("alarmId"))
+            }
+          />
           <TableButton>
             <ArrowPathIcon className="w-5" />
           </TableButton>
           <TableButton>
-            <span>CSV</span>
+            <span className="text-xs">CSV</span>
           </TableButton>
           <TableButton>
-            <span>PDF</span>
+            <span className="text-xs">PDF</span>
           </TableButton>
           <TableButton>
             <CalendarIcon />

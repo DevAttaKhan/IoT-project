@@ -33,9 +33,6 @@ export const columns = (action: any): ColumnDef<IUser>[] => [
   {
     accessorKey: "name",
     header: "NAME",
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
-    },
   },
   {
     accessorKey: "location",
@@ -57,8 +54,12 @@ export const columns = (action: any): ColumnDef<IUser>[] => [
     cell: ({ row }) => {
       return (
         <div>
-          <p className="text-base mb-1">{row.original.phoneNumber}</p>
-          <p className="text-dark-gray text-sm">{row.original.email}</p>
+          <p className="text-xs md:text-base mb-1">
+            {row.original.phoneNumber}
+          </p>
+          <p className="text-dark-gray text-xs md:text-sm">
+            {row.original.email}
+          </p>
         </div>
       );
     },
@@ -84,9 +85,6 @@ export const columns = (action: any): ColumnDef<IUser>[] => [
           </div>
         </div>
       );
-    },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
     },
   },
 ];

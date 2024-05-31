@@ -1,17 +1,16 @@
 import { DataTable } from "@/components/common/data-table";
-import { EVENTS_FILTER_OPTIONS, columns, UserData, IUser } from "./data.tsx";
+import { columns, UserData, IUser } from "./data.tsx";
 import {
-  SelectDropdown,
   TableButton,
   TableDropdownFilter,
   TableSearchbar,
 } from "@/components/common";
-import { ChartIcon, SearchIcon } from "@/assets/icons";
+import { ChartIcon } from "@/assets/icons";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useMemo, useState } from "react";
 import { UserModal } from "./user-modal.tsx";
 import WarningPrompt from "@/components/common/warning-prompt.tsx";
-import { getFilterValues } from "@/lib/utils.ts";
+import { SearchByName, getFilterValues } from "@/lib/utils.ts";
 import { Table } from "@tanstack/react-table";
 
 export const UsersTable = () => {
@@ -41,7 +40,9 @@ export const UsersTable = () => {
         </h2>
 
         <div className="flex flex-wrap md:flex-nowrap gap-3 items-center gap-x-2 self-end">
-          <TableSearchbar />
+          <TableSearchbar
+            onChange={(value) => SearchByName(value, table?.getColumn("name"))}
+          />
           <TableButton onClick={() => setOpenModal(true)}>
             <PlusIcon className=" h-6 w-6 text-black" />
           </TableButton>

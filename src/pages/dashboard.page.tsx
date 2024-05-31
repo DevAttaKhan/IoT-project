@@ -1,17 +1,7 @@
-import { Fragment } from "react";
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Transition,
-} from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { PinIcon } from "@/assets/icons";
 import { Link } from "react-router-dom";
 import { FilterBar, StatsCards } from "@/components/common";
 import { SITE_COLLECTION_LIST } from "@/components/common/stats-cards";
-import classNames from "classnames";
 import { BellIcon } from "@heroicons/react/24/outline";
 import {
   SiteLocationTable,

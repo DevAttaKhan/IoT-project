@@ -1,12 +1,15 @@
-import { SelectDropdown, TableSearchbar } from "@/components/common";
-import { FILTER_OPTIONS, columns, siteLocations } from "./data.tsx";
-import { LocationIcon, MapSvg, SearchIcon } from "@/assets/icons";
+import { TableSearchbar } from "@/components/common";
+import { ISiteLocation, columns, siteLocations } from "./data.tsx";
+import { LocationIcon, MapSvg } from "@/assets/icons";
 import { DataTable } from "@/components/common";
 import { useMemo, useState } from "react";
 import { SiteLocationModal } from "./site-location-modal.tsx";
+import { SearchByName } from "@/lib/utils.ts";
+import { Table } from "@tanstack/react-table";
 
 export const SiteLocationTable = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [table, setTable] = useState<Table<ISiteLocation>>();
 
   const handleModal = (id: string) => {
     console.log(id);
@@ -27,13 +30,21 @@ export const SiteLocationTable = () => {
             Site Locations
           </h2>
 
-          <TableSearchbar />
+          <TableSearchbar
+            onChange={(value) =>
+              SearchByName(value, table?.getColumn("siteId"))
+            }
+          />
         </div>
         <div className="mb-28">
           <MapSvg />
         </div>
         <div className="md:overflow-x-visible  overflow-x-auto pb-4">
-          <DataTable columns={sitelocationColumns} data={siteLocations} />
+          <DataTable
+            columns={sitelocationColumns}
+            data={siteLocations}
+            setTable={setTable}
+          />
         </div>
       </div>
       <SiteLocationModal isOpen={openModal} setIsOpen={setOpenModal} />

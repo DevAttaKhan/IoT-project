@@ -3,7 +3,11 @@ import { Menu, MenuButton, MenuItems, Transition } from "@headlessui/react";
 import classNames from "classnames";
 import { Fragment, useState } from "react";
 
-export const TableSearchbar = () => {
+type Props = {
+  onChange: (value: string) => void;
+};
+
+export const TableSearchbar = ({ onChange }: Props) => {
   const [active, setActive] = useState(false);
   return (
     <>
@@ -14,6 +18,7 @@ export const TableSearchbar = () => {
             "w-full outline-none bg-inherit transition-all  overflow-hidden",
             [active ? " md:relative md:max-w-60 lg:max-w-72 px-2" : "w-0"]
           )}
+          onChange={(e) => onChange(e.target.value)}
         />
         <button
           onClick={() => setActive((prev) => !prev)}
@@ -43,6 +48,7 @@ export const TableSearchbar = () => {
               type="search"
               placeholder="Search"
               className="w-full outline-none  bg-inherit transition-all  overflow-hidden   shodow-lg rounded-lg "
+              onChange={(e) => onChange(e.target.value)}
             />
           </MenuItems>
         </Transition>

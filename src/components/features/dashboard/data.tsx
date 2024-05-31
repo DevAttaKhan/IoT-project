@@ -57,7 +57,7 @@ export const columns = (action: any): ColumnDef<ISiteLocation>[] => [
 
 export const siteLocations: ISiteLocation[] = [
   {
-    siteId: "HAU1724",
+    siteId: "abcd",
     location: "216 Maxine Garden",
     vibrationSensor: "on",
     smartLock: "close",

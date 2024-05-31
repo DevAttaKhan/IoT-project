@@ -1,7 +1,6 @@
-import { CalendarIcon } from "@/assets/icons";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { ActiveAlarmColumns, AlarmData, IAlarm } from "./data";
-import { getFilterValues } from "@/lib/utils";
+import { SearchByName, getFilterValues } from "@/lib/utils";
 import { useState } from "react";
 import { Table } from "@tanstack/react-table";
 import {
@@ -21,18 +20,19 @@ export const ActiveAlarmTable = () => {
         </h2>
 
         <div className="flex flex-wrap md:flex-nowrap gap-3 items-center gap-x-2 self-end">
-          <TableSearchbar />
+          <TableSearchbar
+            onChange={(value) =>
+              SearchByName(value, table?.getColumn("alarmId"))
+            }
+          />
           <TableButton>
             <ArrowPathIcon className="w-5" />
           </TableButton>
           <TableButton>
-            <span>CSV</span>
+            <span className="text-xs">CSV</span>
           </TableButton>
           <TableButton>
-            <span>PDF</span>
-          </TableButton>
-          <TableButton>
-            <CalendarIcon />
+            <span className="text-xs">PDF</span>
           </TableButton>
 
           <TableDropdownFilter

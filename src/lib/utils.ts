@@ -1,5 +1,7 @@
 // import { mkConfig, generateCsv, download } from 'export-to-csv'
 
+import { Column } from "@tanstack/react-table";
+
 export function getFilterValues<T>(data: T[], selector: keyof T) {
     const uniqueArray = [...new Set(data.map(item => item[selector]))]
     const noEmptyValues = uniqueArray.filter(element => element !== "").sort()
@@ -11,6 +13,12 @@ export function getFilterValues<T>(data: T[], selector: keyof T) {
     })
     return optionsArray
 }
+
+
+
+export const SearchByName = <T,>(value: string, column: Column<T, unknown> | undefined) => {
+    column?.setFilterValue(value ? value : undefined);
+};
 
 
 // const csvConfig = mkConfig({

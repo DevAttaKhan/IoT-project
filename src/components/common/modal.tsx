@@ -17,7 +17,15 @@ type Props = {
 export const Modal = ({ children, isOpen, widthClass, onClose }: Props) => {
   return (
     <>
-      <Transition appear show={isOpen}>
+      <Transition
+        enter="ease-out duration-300"
+        enterFrom="opacity-0 transform-[scale(95%)]"
+        enterTo="opacity-100 transform-[scale(100%)]"
+        leave="ease-in duration-200"
+        leaveFrom="opacity-100 transform-[scale(100%)]"
+        leaveTo="opacity-0 transform-[scale(95%)]"
+        show={isOpen}
+      >
         <Dialog
           as="div"
           className="relative z-50 focus:outline-none "

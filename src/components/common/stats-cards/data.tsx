@@ -10,28 +10,28 @@ import {
 
 export const SITE_COLLECTION_LIST: IStatsCard[] = [
   {
-    name: "Critical",
+    name: "Critical Alarms",
     type: "Status",
     description: "Current Status of site",
     color: "bg-red-500",
     icon: <ExplodingIcon />,
   },
   {
-    name: "Undetermin ed",
-    type: "Source",
-    description: "Current Power Source",
-    color: "bg-green-500",
-    icon: <DizzyIcon />,
-  },
-  {
-    name: "Infinitehr",
+    name: "Major Alarms",
     type: "Estimated Backup",
     description: "Current Battery Backup Abailable",
     color: "bg-orange-400 ",
     icon: <ConfusedIcon />,
   },
   {
-    name: "Site Load",
+    name: "Online Sites",
+    type: "Source",
+    description: "Current Power Source",
+    color: "bg-green-500",
+    icon: <DizzyIcon />,
+  },
+  {
+    name: "Offline Sites",
     type: "0kW",
     description: "Current Site Load",
     color: "bg-indigo-950 ",

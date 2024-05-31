@@ -9,6 +9,7 @@ import {
   HardwaresPage,
   UsersPage,
   AlarmsPage,
+  AlarmHistoryPage,
 } from "./pages";
 
 export const routes = createBrowserRouter([
@@ -50,6 +51,10 @@ export const routes = createBrowserRouter([
       {
         path: "alarms",
         element: <AlarmsPage />,
+      },
+      {
+        path: "alarms-history",
+        element: <AlarmHistoryPage />,
       },
     ],
   },

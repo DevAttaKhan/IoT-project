@@ -19,6 +19,9 @@ export const HardwaresTable = () => {
     setOpenModal(true);
   };
 
+  //use to export to csv
+  // console.log(table?.getFilteredRowModel());
+
   const hardareColumns = useMemo(
     () => columns({ handleEdit, promptWarning: setShowWarning }),
     []
@@ -52,7 +55,7 @@ export const HardwaresTable = () => {
           </div>
         </div>
 
-        <div className="md:overflow-x-visible overflow-x-auto">
+        <div className="md:overflow-x-visible overflow-x-auto pb-4">
           <DataTable
             columns={hardareColumns}
             data={HardwareData}

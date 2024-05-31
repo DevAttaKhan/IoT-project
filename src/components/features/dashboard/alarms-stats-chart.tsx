@@ -52,11 +52,11 @@ export const AlarmsStatsChart = () => {
         </li>
         <li className="text-md font-medium w-1/2 items-center flex">
           <span className="block w-4 h-4 bg-green-500 mr-5"></span>
-          <span>Activated</span>
+          <span>Online</span>
         </li>
         <li className="text-md font-medium w-1/2 items-center flex">
           <span className="block w-4 h-4 bg-gray-300 mr-5"></span>
-          <span>Deactivated</span>
+          <span>Offline</span>
         </li>
       </ul>
     </div>

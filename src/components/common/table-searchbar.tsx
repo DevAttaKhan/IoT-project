@@ -15,7 +15,7 @@ export const TableSearchbar = ({ onChange }: Props) => {
         <input
           type="search"
           className={classNames(
-            "w-full outline-none bg-inherit transition-all  overflow-hidden",
+            "outline-none bg-inherit transition-all  overflow-hidden",
             [active ? " md:relative md:max-w-60 lg:max-w-72 px-2" : "w-0"]
           )}
           onChange={(e) => onChange(e.target.value)}

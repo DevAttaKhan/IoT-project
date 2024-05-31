@@ -10,10 +10,12 @@ import { AlarmData, AlarmHistoryColumns, IAlarm } from "./data";
 import { SearchByName, exportExcel, getFilterValues } from "@/lib/utils";
 import { useState } from "react";
 import { Table } from "@tanstack/react-table";
+import { usePDF } from "react-to-pdf";
+import { pdfoptions } from "./pdf-options";
 
 export const AlarmHistoryTable = () => {
   const [table, setTable] = useState<Table<IAlarm>>();
-
+  const { toPDF, targetRef } = usePDF(pdfoptions);
   const handleCsvExport = () => {
     const rows = table?.getFilteredRowModel().rows;
     exportExcel(rows);
@@ -38,7 +40,7 @@ export const AlarmHistoryTable = () => {
           <TableButton onClick={handleCsvExport}>
             <span className="text-xs">CSV</span>
           </TableButton>
-          <TableButton>
+          <TableButton onClick={toPDF}>
             <span className="text-xs">PDF</span>
           </TableButton>
           <TableButton>
@@ -53,7 +55,7 @@ export const AlarmHistoryTable = () => {
         </div>
       </div>
 
-      <div className=" overflow-x-auto pb-5 text-xs">
+      <div className=" overflow-x-auto pb-5 text-xs" ref={targetRef}>
         <DataTable
           columns={AlarmHistoryColumns}
           data={AlarmData}

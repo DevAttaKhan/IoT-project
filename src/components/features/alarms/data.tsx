@@ -109,11 +109,14 @@ export const ActiveAlarmColumns: ColumnDef<IAlarm>[] = [
       const severity = row.original.severity;
       return (
         <p
-          className={classNames("rounded  text-white text-sm px-4 py-1 w-20", {
-            "bg-red-700": severity == "critical",
-            "bg-orange-700": severity == "mild",
-            "bg-green-500": severity == "normal",
-          })}
+          className={classNames(
+            " text-center rounded capitalize text-white  text-sm px-4 py-1  w-20",
+            {
+              "bg-red-700": severity == "critical",
+              "bg-orange-700": severity == "mild",
+              "bg-green-500": severity == "normal",
+            }
+          )}
         >
           {row.original.severity}
         </p>

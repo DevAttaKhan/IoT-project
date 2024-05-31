@@ -7,12 +7,17 @@ import {
 } from "@/components/common";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { AlarmData, AlarmHistoryColumns, IAlarm } from "./data";
-import { SearchByName, getFilterValues } from "@/lib/utils";
+import { SearchByName, exportExcel, getFilterValues } from "@/lib/utils";
 import { useState } from "react";
 import { Table } from "@tanstack/react-table";
 
 export const AlarmHistoryTable = () => {
   const [table, setTable] = useState<Table<IAlarm>>();
+
+  const handleCsvExport = () => {
+    const rows = table?.getFilteredRowModel().rows;
+    exportExcel(rows);
+  };
 
   return (
     <div className="   w-full bg-white rounded-2xl md:p-8 p-5  mt-11 ">
@@ -30,7 +35,7 @@ export const AlarmHistoryTable = () => {
           <TableButton>
             <ArrowPathIcon className="w-5" />
           </TableButton>
-          <TableButton>
+          <TableButton onClick={handleCsvExport}>
             <span className="text-xs">CSV</span>
           </TableButton>
           <TableButton>

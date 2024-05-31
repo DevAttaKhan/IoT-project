@@ -23,9 +23,6 @@ export const HardwaresTable = () => {
     setOpenModal(true);
   };
 
-  //use to export to csv
-  // console.log(table?.getFilteredRowModel());
-
   const hardareColumns = useMemo(
     () => columns({ handleEdit, promptWarning: setShowWarning }),
     []

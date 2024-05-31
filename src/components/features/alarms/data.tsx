@@ -1,4 +1,6 @@
+import { faker } from "@faker-js/faker";
 import { ColumnDef } from "@tanstack/react-table";
+import classNames from "classnames";
 
 interface IAlarmStat {
   count: number;
@@ -10,13 +12,13 @@ interface IAlarmStat {
 export interface IAlarm {
   alarmId: string;
   type: string;
-  severity: "critical" | "mild";
+  severity: string;
   startTime: string;
   endTime: string;
   duration: string;
   siteId: string;
   description: string;
-  currentStatus: "system close Alarm";
+  currentStatus: string;
 }
 
 export const AlarmStateData: IAlarmStat[] = [
@@ -58,74 +60,35 @@ export const AlarmStateData: IAlarmStat[] = [
   },
 ];
 
-export const AlarmData: IAlarm[] = [
-  {
-    alarmId: "49688462",
-    type: "RIM",
-    severity: "critical",
-    siteId: "INX_SCT",
-    description: "ATC Vibration Active",
-    currentStatus: "system close Alarm",
-    startTime: "Apr 27,2024 | 15:29",
-    endTime: "Apr 27,2024 | 15:29",
-    duration: "00:20:00",
-  },
-  {
-    alarmId: "49688462",
-    type: "RIM",
-    severity: "critical",
-    siteId: "INX_SCT",
-    description: "ATC Vibration Active",
-    currentStatus: "system close Alarm",
-    startTime: "Apr 27,2024 | 15:29",
-    endTime: "Apr 27,2024 | 15:29",
-    duration: "00:20:00",
-  },
-  {
-    alarmId: "49688462",
-    type: "RIM",
-    severity: "critical",
-    siteId: "INX_SCT",
-    description: "ATC Vibration Active",
-    currentStatus: "system close Alarm",
-    startTime: "Apr 27,2024 | 15:29",
-    endTime: "Apr 27,2024 | 15:29",
-    duration: "00:20:00",
-  },
-  {
-    alarmId: "49688462",
-    type: "RIM",
-    severity: "critical",
-    siteId: "INX_SCT",
-    description: "ATC Vibration Active",
-    currentStatus: "system close Alarm",
-    startTime: "Apr 27,2024 | 15:29",
-    endTime: "Apr 27,2024 | 15:29",
-    duration: "00:20:00",
-  },
-  {
-    alarmId: "49688462",
-    type: "RIM",
-    severity: "critical",
-    siteId: "INX_SCT",
-    description: "ATC Vibration Active",
-    currentStatus: "system close Alarm",
-    startTime: "Apr 27,2024 | 15:29",
-    endTime: "Apr 27,2024 | 15:29",
-    duration: "00:20:00",
-  },
-  {
-    alarmId: "49688462",
-    type: "RIM",
-    severity: "critical",
-    siteId: "INX_SCT",
-    description: "ATC Vibration Active",
-    currentStatus: "system close Alarm",
-    startTime: "Apr 27,2024 | 15:29",
-    endTime: "Apr 27,2024 | 15:29",
-    duration: "00:20:00",
-  },
-];
+export const AlarmData: IAlarm[] = Array.from(
+  { length: 13 },
+  (_, i) => i + 1
+).map(() => ({
+  alarmId: faker.string.alphanumeric(6),
+  type: faker.helpers.enumValue({ rim: "RIM", jim: "JIM", tim: "TIM" }),
+  severity: faker.helpers.enumValue({
+    critical: "critical",
+    mild: "mild",
+    normal: "normal",
+  }),
+  siteId: faker.string.alphanumeric(6),
+  description: faker.lorem.words(3),
+  currentStatus: faker.helpers.enumValue({
+    close: "System Close Alarm",
+    resoleved: "System Resovled",
+  }),
+  startTime: new Date(faker.date.anytime()).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }),
+  endTime: new Date(faker.date.anytime()).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }),
+  duration: new Date(faker.date.anytime()).toLocaleTimeString("en-US"),
+}));
 
 export const ActiveAlarmColumns: ColumnDef<IAlarm>[] = [
   {
@@ -143,8 +106,15 @@ export const ActiveAlarmColumns: ColumnDef<IAlarm>[] = [
     accessorKey: "severity",
     header: "severity",
     cell: ({ row }) => {
+      const severity = row.original.severity;
       return (
-        <p className="rounded bg-red-700 text-white text-sm px-4 py-1 w-20">
+        <p
+          className={classNames("rounded  text-white text-sm px-4 py-1 w-20", {
+            "bg-red-700": severity == "critical",
+            "bg-orange-700": severity == "mild",
+            "bg-green-500": severity == "normal",
+          })}
+        >
           {row.original.severity}
         </p>
       );
@@ -162,8 +132,14 @@ export const ActiveAlarmColumns: ColumnDef<IAlarm>[] = [
     accessorKey: "currentStatus",
     header: "current status",
     cell: ({ row }) => {
+      const status = row.original.currentStatus;
       return (
-        <button className="rounded bg-[#856D60] text-white text-sm px-4 py-1 w-44 ">
+        <button
+          className={classNames("rounded  text-white text-sm px-4 py-1 w-44 ", {
+            "bg-[#856D60]": status == "System Close Alarm",
+            "bg-green-500": status == "System Resovled",
+          })}
+        >
           {row.original.currentStatus}
         </button>
       );
@@ -199,8 +175,15 @@ export const AlarmHistoryColumns: ColumnDef<IAlarm>[] = [
     accessorKey: "severity",
     header: "severity",
     cell: ({ row }) => {
+      const severity = row.original.severity;
       return (
-        <p className="rounded bg-red-700 text-white text-sm px-4 py-1 w-20">
+        <p
+          className={classNames("rounded  text-white text-sm px-4 py-1 w-20", {
+            "bg-red-700": severity == "critical",
+            "bg-orange-700": severity == "mild",
+            "bg-green-500": severity == "normal",
+          })}
+        >
           {row.original.severity}
         </p>
       );
@@ -209,19 +192,6 @@ export const AlarmHistoryColumns: ColumnDef<IAlarm>[] = [
   {
     accessorKey: "siteId",
     header: "Site ID",
-    cell: ({ row }) => {
-      return (
-        <div
-          style={{
-            minWidth: "0 !important",
-            padding: "0 !important",
-            margin: "0 !important",
-          }}
-        >
-          {row.original.siteId}
-        </div>
-      );
-    },
   },
   {
     accessorKey: "description",
@@ -231,8 +201,14 @@ export const AlarmHistoryColumns: ColumnDef<IAlarm>[] = [
     accessorKey: "currentStatus",
     header: "current status",
     cell: ({ row }) => {
+      const status = row.original.currentStatus;
       return (
-        <button className="rounded bg-[#856D60] text-white text-xs px-4 py-1 w-44 ">
+        <button
+          className={classNames("rounded  text-white text-sm px-4 py-1 w-44 ", {
+            "bg-[#856D60]": status == "System Close Alarm",
+            "bg-green-500": status == "System Resovled",
+          })}
+        >
           {row.original.currentStatus}
         </button>
       );

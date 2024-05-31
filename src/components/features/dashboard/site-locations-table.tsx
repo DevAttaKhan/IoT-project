@@ -1,4 +1,4 @@
-import { SelectDropdown } from "@/components/common";
+import { SelectDropdown, TableSearchbar } from "@/components/common";
 import { FILTER_OPTIONS, columns, siteLocations } from "./data.tsx";
 import { LocationIcon, MapSvg, SearchIcon } from "@/assets/icons";
 import { DataTable } from "@/components/common";
@@ -20,21 +20,19 @@ export const SiteLocationTable = () => {
 
   return (
     <>
-      <div className=" lg:w-2/3 w-full bg-white rounded-2xl md:p-8 p-5 ">
+      <div className=" lg:w-2/3 w-full bg-white rounded-2xl md:p-8 p-5 relative ">
         <div className="flex md:flex-row md:gap-0 gap-4   w-full mb-16 justify-between">
           <h2 className="font-bold text-lg md:text-xl lg:text-2xl text-gray-700 flex gap-x-2 items-center">
             <LocationIcon />
             Site Locations
           </h2>
 
-          <button className=" w-[45px] h-[45px] rounded border grid place-content-center hover:bg-gray-50 transition ">
-            <SearchIcon />
-          </button>
+          <TableSearchbar />
         </div>
         <div className="mb-28">
           <MapSvg />
         </div>
-        <div className="md:overflow-x-visible overflow-x-auto pb-4">
+        <div className="md:overflow-x-visible  overflow-x-auto pb-4">
           <DataTable columns={sitelocationColumns} data={siteLocations} />
         </div>
       </div>

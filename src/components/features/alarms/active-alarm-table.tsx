@@ -1,44 +1,54 @@
-import { CalendarIcon, SearchIcon } from "@/assets/icons";
-import { DataTable, SelectDropdown } from "@/components/common";
+import { CalendarIcon } from "@/assets/icons";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import { EVENTS_FILTER_OPTIONS } from "../events";
-import { ActiveAlarmColumns, AlarmData } from "./data";
+import { ActiveAlarmColumns, AlarmData, IAlarm } from "./data";
+import { getFilterValues } from "@/lib/utils";
+import { useState } from "react";
+import { Table } from "@tanstack/react-table";
+import {
+  DataTable,
+  TableButton,
+  TableDropdownFilter,
+  TableSearchbar,
+} from "@/components/common";
 
 export const ActiveAlarmTable = () => {
+  const [table, setTable] = useState<Table<IAlarm>>();
   return (
-    <div className="   w-full bg-white rounded-2xl md:p-8 p-5 ">
+    <div className="relative w-full bg-white rounded-2xl md:p-8 p-5">
       <div className="flex md:flex-row md:gap-0 gap-4  flex-col w-full mb-16 justify-between">
         <h2 className="font-bold text-2xl text-gray-700 flex gap-x-2 items-center">
           Active Alarms
         </h2>
 
-        <div className="flex flex-wrap md:flex-nowrap gap-6  gap-x-2">
-          <button className="inline-flex w-full border justify-center rounded-md bg-white px-4 py-4 text-md items-center font-normal  shadow-sm hover:bg-gray-50">
-            <SearchIcon />
-          </button>
-          <button className="inline-flex w-full border justify-center rounded-md bg-white px-4 py-4 text-md items-center font-normal  shadow-sm hover:bg-gray-50">
+        <div className="flex flex-wrap md:flex-nowrap gap-3 items-center gap-x-2 self-end">
+          <TableSearchbar />
+          <TableButton>
             <ArrowPathIcon className="w-5" />
-          </button>
-          <button className="inline-flex w-full border justify-center rounded-md bg-white px-4 py-3 text-md items-center font-normal  shadow-sm hover:bg-gray-50">
-            PDF
-          </button>
-          <button className="inline-flex w-full border justify-center rounded-md bg-white px-4 py-3 text-md items-center font-normal  shadow-sm hover:bg-gray-50">
-            CSV
-          </button>
-          <button className="inline-flex w-full justify-center rounded-md bg-white px-4 py-3 text-md items-center font-normal border hover:bg-gray-50">
+          </TableButton>
+          <TableButton>
+            <span>CSV</span>
+          </TableButton>
+          <TableButton>
+            <span>PDF</span>
+          </TableButton>
+          <TableButton>
             <CalendarIcon />
-          </button>
+          </TableButton>
 
-          <SelectDropdown
-            label="Alarm Type"
-            options={EVENTS_FILTER_OPTIONS}
-            buttonClass="w-36"
+          <TableDropdownFilter
+            title="Alarm Type"
+            options={getFilterValues(AlarmData, "type")}
+            column={table?.getColumn("type")}
           />
         </div>
       </div>
 
-      <div className="md:overflow-x-visible overflow-x-auto">
-        <DataTable columns={ActiveAlarmColumns} data={AlarmData} />
+      <div className="md:overflow-x-visible overflow-x-auto pb-5">
+        <DataTable
+          columns={ActiveAlarmColumns}
+          data={AlarmData}
+          setTable={setTable}
+        />
       </div>
     </div>
   );

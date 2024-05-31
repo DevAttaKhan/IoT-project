@@ -38,7 +38,7 @@ export const TableDropdownFilter = <TData, TValue>({
 
   return (
     <Menu as="div" className="relative text-left shrink-0">
-      <MenuButton className="w-full h-[45px] flex gap-2 items-center  rounded-md border justify-center bg-white px-3 text-md text-slate-400 hover:bg-gray-50">
+      <MenuButton className="w-full h-9 md:h-[45px] flex gap-2 items-center  rounded-md border justify-center bg-white px-3 text-md text-slate-400 hover:bg-gray-50">
         {title}
         <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" />
       </MenuButton>

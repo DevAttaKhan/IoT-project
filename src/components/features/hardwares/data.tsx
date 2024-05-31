@@ -46,7 +46,7 @@ export const columns = (action: any): ColumnDef<IHardware>[] => [
 export const HardwareData: IHardware[] = Array.from(
   { length: 13 },
   (_, i) => i + 1
-).map((el) => ({
+).map((_el) => ({
   chipId: faker.string.alphanumeric(6),
   siteId: faker.string.alphanumeric(6),
   site: faker.location.city(),

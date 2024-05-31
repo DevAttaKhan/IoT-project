@@ -17,11 +17,11 @@ table tr {
 }
 
 table tr th {
-  @apply md:pr-0 pr-4  text-gray-400 tracking-wide font-medium  uppercase text-left pb-2 text-sm md:text-base;
+  @apply md:pr-0 pr-4  text-gray-400 tracking-wide font-medium  uppercase text-left pb-2 text-inherit;
 }
 
 table tr td {
-  @apply px-2 py-4 md:pt-6 md:pb-10 font-normal text-sm md:text-base;
+  @apply px-2 py-4 md:pt-6 md:pb-10 font-normal  text-inherit;
 }
 
 .primary-button {
@@ -50,6 +50,11 @@ table tr td {
 
 .select_country {
   border-radius: 16px !important;
+}
+
+.table-search--mobile {
+  /* left: 50%;
+  transform: translateX(-29%) !important; */
 }
 
 @keyframes rotate-scale-up {

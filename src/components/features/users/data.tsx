@@ -1,5 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { CircleCrossIcon, CircleEditIcon } from "@/assets/icons";
+import { faker } from "@faker-js/faker";
 export const EVENTS_FILTER_OPTIONS = [
   { id: 1, value: "Option 1" },
   { id: 2, value: "Option 2" },
@@ -8,169 +9,65 @@ export const EVENTS_FILTER_OPTIONS = [
 ];
 
 export interface IUser {
-  id?: string;
   name: string;
   location: string;
   siteId: string;
-  phone: { phoneNumber: string; email: string };
-  action: string;
+  phoneNumber: string;
+  email: string;
+  actions: string;
 }
 
-export const UserData: IUser[] = [
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-  {
-    name: "Stephan Orchid",
-    location: "216 Maxine Garden",
-    siteId: "HAU1724Y",
-    phone: {
-      phoneNumber: "555-123-4567",
-      email: "stephanorchid@mail.com",
-    },
-    action: "",
-  },
-];
+export const UserData: IUser[] = Array.from(
+  { length: 13 },
+  (_, i) => i + 1
+).map((_el) => ({
+  name: faker.person.fullName(),
+  location: faker.location.streetAddress(),
+  siteId: faker.string.alphanumeric(6),
+  phoneNumber: faker.phone.number(),
+  email: faker.internet.email(),
+  actions: "",
+}));
 
 export const columns = (action: any): ColumnDef<IUser>[] => [
   {
     accessorKey: "name",
     header: "NAME",
-    cell: ({ row }) => {
-      return (
-        <div>
-          <p className="text-base">{row.original.name}</p>
-        </div>
-      );
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
     },
   },
   {
     accessorKey: "location",
     header: "LOCATION",
-    cell: ({ row }) => {
-      return (
-        <div>
-          <p className="text-base">{row.original.location}</p>
-        </div>
-      );
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
     },
   },
   {
     accessorKey: "siteId",
     header: "SITE ID",
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
-    accessorKey: "phone",
+    accessorKey: "phoneNumber",
     header: "PHONE #",
     cell: ({ row }) => {
       return (
         <div>
-          {" "}
-          <p className="text-base mb-1">{row.original.phone.phoneNumber}</p>
-          <p className="text-dark-gray text-sm">{row.original.phone.email}</p>
+          <p className="text-base mb-1">{row.original.phoneNumber}</p>
+          <p className="text-dark-gray text-sm">{row.original.email}</p>
         </div>
       );
     },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
-    accessorKey: "action",
+    accessorKey: "actions",
     header: "Actions",
     cell: ({ row }) => {
       return (
@@ -187,6 +84,9 @@ export const columns = (action: any): ColumnDef<IUser>[] => [
           </div>
         </div>
       );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
     },
   },
 ];

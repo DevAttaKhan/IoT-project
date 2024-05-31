@@ -1,11 +1,12 @@
-export const SearchIcon = () => {
+export const SearchIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
+      width="22"
+      height="22"
       viewBox="0 0 20 20"
       fill="currentColor"
+      className={className}
     >
       <path
         id="search_icon"

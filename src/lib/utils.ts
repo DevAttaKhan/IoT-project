@@ -1,6 +1,6 @@
 import { mkConfig, generateCsv, download } from 'export-to-csv'
 
-import { Column, Row } from "@tanstack/react-table";
+import { Column } from "@tanstack/react-table";
 
 export function getFilterValues<T>(data: T[], selector: keyof T) {
     const uniqueArray = [...new Set(data.map(item => item[selector]))]

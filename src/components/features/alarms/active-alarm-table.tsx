@@ -1,9 +1,9 @@
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { ActiveAlarmColumns, AlarmData, IAlarm } from "./data";
 import { SearchByName, exportExcel, getFilterValues } from "@/lib/utils";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Table } from "@tanstack/react-table";
-import generatePDF, { usePDF } from "react-to-pdf";
+import { usePDF } from "react-to-pdf";
 import {
   DataTable,
   TableButton,

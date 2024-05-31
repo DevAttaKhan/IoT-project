@@ -1,22 +1,31 @@
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { ActiveAlarmColumns, AlarmData, IAlarm } from "./data";
 import { SearchByName, exportExcel, getFilterValues } from "@/lib/utils";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Table } from "@tanstack/react-table";
+import generatePDF, { usePDF } from "react-to-pdf";
 import {
   DataTable,
   TableButton,
   TableDropdownFilter,
   TableSearchbar,
 } from "@/components/common";
+import { pdfoptions } from "./pdf-options";
 
 export const ActiveAlarmTable = () => {
   const [table, setTable] = useState<Table<IAlarm>>();
-
+  const { toPDF, targetRef } = usePDF(pdfoptions);
   const handleCsvExport = () => {
     const rows = table?.getFilteredRowModel().rows;
     exportExcel(rows);
   };
+
+  // const downloadPdf = () => {
+  //   const table = tableRef.current;
+  //   if (table) {
+  //     generatePDF(table, pdfoptions);
+  //   }
+  // };
 
   return (
     <div className="relative w-full bg-white rounded-2xl md:p-8 p-5">
@@ -37,7 +46,7 @@ export const ActiveAlarmTable = () => {
           <TableButton onClick={handleCsvExport}>
             <span className="text-xs">CSV</span>
           </TableButton>
-          <TableButton>
+          <TableButton onClick={toPDF}>
             <span className="text-xs">PDF</span>
           </TableButton>
 
@@ -49,7 +58,10 @@ export const ActiveAlarmTable = () => {
         </div>
       </div>
 
-      <div className="md:overflow-x-visible overflow-x-auto pb-5">
+      <div
+        className="md:overflow-x-visible overflow-x-auto pb-5"
+        ref={targetRef}
+      >
         <DataTable
           columns={ActiveAlarmColumns}
           data={AlarmData}

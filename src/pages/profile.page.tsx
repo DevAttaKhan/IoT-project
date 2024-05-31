@@ -91,6 +91,11 @@ export const ProfilePage = () => {
             </TabPanel>
             <TabPanel>Notifications section</TabPanel>
             <TabPanel>
+              <p>
+                Once your account is deleted, all your data including files,
+                messages, and personal information will be permanently removed
+                and cannot be recovered.
+              </p>
               <button
                 onClick={() => setShowWarning(true)}
                 className=" mt-4 px-5 py-1 lg:px-8 lg:py-2 rounded bg-red-600 text-white max-w-max ml-auto cursor-pointer hover:bg-opacity-70 "

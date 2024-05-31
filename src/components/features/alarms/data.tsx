@@ -135,6 +135,9 @@ export const ActiveAlarmColumns: ColumnDef<IAlarm>[] = [
   {
     accessorKey: "type",
     header: "Type",
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     accessorKey: "severity",
@@ -176,6 +179,9 @@ export const AlarmHistoryColumns: ColumnDef<IAlarm>[] = [
   {
     accessorKey: "type",
     header: "Type",
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     accessorKey: "startTime",

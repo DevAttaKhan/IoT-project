@@ -7,7 +7,12 @@ type Props = {
   description?: string;
 };
 
-const WarningPrompt = ({ isOpen, setIsOpen, title, description }: Props) => {
+export const WarningPrompt = ({
+  isOpen,
+  setIsOpen,
+  title,
+  description,
+}: Props) => {
   return (
     <Modal
       isOpen={isOpen}

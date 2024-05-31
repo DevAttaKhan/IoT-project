@@ -7,7 +7,7 @@ import {
 } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 type Props = {
   name?: string;
@@ -27,6 +27,9 @@ export const SelectDropdown = ({
   containerClass,
   itemsContainerClass,
 }: Props) => {
+  const [selected, setSelected] = useState<
+    { id: number; value: string } | undefined
+  >();
   return (
     <Menu
       as="div"
@@ -36,11 +39,11 @@ export const SelectDropdown = ({
         {label && (
           <MenuButton
             className={classNames(
-              "rounded-md inline-flex w-full border justify-center gap-x-1.5  bg-white px-3 py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50",
+              "rounded-lg md:rounded-xl lg:rounded-2xl inline-flex w-full border justify-center gap-x-1.5  bg-white px-3 py-2 lg:py-3 text-md items-center font-normal text-slate-400 shadow-sm hover:bg-gray-50",
               buttonClass
             )}
           >
-            {label}
+            {selected?.value || label}
             <ChevronDownIcon
               className="-mr-1 h-5 w-5 text-gray-400"
               aria-hidden="true"
@@ -72,10 +75,14 @@ export const SelectDropdown = ({
                 <MenuItem key={i}>
                   {({ active }: { active: boolean }) => (
                     <div
-                      className={classNames("block px-4 py-2 text-sm w-full", {
-                        "bg-gray-100 text-gray-900": active,
-                        "text-gray-700": !active,
-                      })}
+                      className={classNames(
+                        "block px-4 py-2 text-sm w-full cursor-pointer",
+                        {
+                          "bg-gray-100 text-gray-900": active,
+                          "text-gray-700": !active,
+                        }
+                      )}
+                      onClick={() => setSelected(el)}
                     >
                       {el.value}
                     </div>

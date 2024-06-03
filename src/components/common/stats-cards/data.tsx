@@ -41,7 +41,7 @@ export const SITE_COLLECTION_LIST: IStatsCard[] = [
 
 export const USER_COLLECTION_LIST: IStatsCard[] = [
   {
-    name: "Total Managers",
+    name: "Total Users",
     type: "600+",
     description: "Current Status of site",
     color: "bg-[#0F5EF9]",
@@ -55,7 +55,7 @@ export const USER_COLLECTION_LIST: IStatsCard[] = [
     icon: <UserIcon />,
   },
   {
-    name: "Total Sites",
+    name: "Active Viewers",
     type: "290",
     description: "Current Battery Backup Abailable",
     color: "bg-[#FF8D0E]",
@@ -74,29 +74,29 @@ export const HARDWARE_COLLECTION_LIST: IStatsCard[] = [
   {
     name: "Total Hardware",
     type: "800+",
-    description: "Current Status of site",
+    description: "Total Installed",
     color: "bg-[#0F5EF9]",
     icon: <SquaresIcon />,
   },
   {
     name: "Active Hardware",
     type: "710",
-    description: "Current Power Source",
+    description: "Online IoT Hardware",
     color: "bg-green-500",
+    icon: <SquaresIcon />,
+  },
+  {
+    name: "Offline Hardware",
+    type: "90",
+    description: "Offline IoT Hardware",
+    color: "bg-indigo-950 ",
     icon: <SquaresIcon />,
   },
   {
     name: "Locations",
     type: "20+",
-    description: "Current Battery Backup Available",
+    description: "   ",
     color: "bg-orange-400 ",
-    icon: <SquaresIcon />,
-  },
-  {
-    name: " Disable Hardware",
-    type: "90",
-    description: "Current Site Load",
-    color: "bg-indigo-950 ",
     icon: <SquaresIcon />,
   },
 ];

@@ -48,9 +48,9 @@ export const UsersTable = () => {
           </TableButton>
 
           <TableDropdownFilter
-            title="Site ID"
-            options={getFilterValues(UserData, "siteId")}
-            column={table?.getColumn("siteId")}
+            title="Role"
+            options={getFilterValues(UserData, "role")}
+            column={table?.getColumn("role")}
           />
         </div>
       </div>

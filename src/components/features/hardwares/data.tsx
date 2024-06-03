@@ -5,7 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 export interface IHardware {
   chipId: string;
   siteId: string;
-  site: string;
+  installedDate: string;
   actions: "";
 }
 
@@ -19,8 +19,8 @@ export const columns = (action: any): ColumnDef<IHardware>[] => [
     },
   },
   {
-    accessorKey: "site",
-    header: "Site #",
+    accessorKey: "installedDate",
+    header: "Installed Date",
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
@@ -49,6 +49,10 @@ export const HardwareData: IHardware[] = Array.from(
 ).map((_el) => ({
   chipId: faker.string.alphanumeric(6),
   siteId: faker.string.alphanumeric(6),
-  site: faker.location.city(),
+  installedDate: new Date(faker.date.anytime()).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }),
   actions: "",
 }));

@@ -1,6 +1,6 @@
 import { TableButton, TableSearchbar } from "@/components/common";
 import { ISiteLocation, columns, siteLocations } from "./data.tsx";
-import { LocationIcon, MapSvg } from "@/assets/icons";
+import { LocationIcon } from "@/assets/icons";
 import { DataTable } from "@/components/common";
 import { useMemo, useState } from "react";
 import { SiteLocationModal } from "./site-location-modal.tsx";
@@ -8,6 +8,7 @@ import { SearchByName } from "@/lib/utils.ts";
 import { Table } from "@tanstack/react-table";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { AddSiteModal } from "./add-site-modal.tsx";
+import { SiteMap } from "./site-map.tsx";
 
 export const SiteLocationTable = () => {
   const [addSiteModal, setAddSiteModal] = useState(false);
@@ -44,8 +45,8 @@ export const SiteLocationTable = () => {
             </TableButton>
           </div>
         </div>
-        <div className="mb-28">
-          <MapSvg />
+        <div className="mb-20 relative h-96 rounded-md overflow-hidden">
+          <SiteMap />
         </div>
         <div className="md:overflow-x-visible  overflow-x-auto pb-4">
           <DataTable

@@ -1,10 +1,10 @@
-import { Modal, SearchDropdown } from "@/components/common";
+import { Modal } from "@/components/common";
 type Props = {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
 };
 
-export const AddHardwareModal = ({ isOpen, setIsOpen }: Props) => {
+export const AddSiteModal = ({ isOpen, setIsOpen }: Props) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -16,18 +16,13 @@ export const AddHardwareModal = ({ isOpen, setIsOpen }: Props) => {
         <form>
           <input
             type="text"
-            placeholder="Chip ID"
+            placeholder="Site ID"
             className="w-full mb-5 border px-6 py-3 rounded outline-bluebonnet "
           />
-          <SearchDropdown
-            placeholder="Site ID"
-            options={[
-              { id: 1, name: "SIT_123" },
-              { id: 2, name: "SIT_596" },
-              { id: 3, name: "SIT_985" },
-              { id: 4, name: "SIT_972" },
-              { id: 5, name: "SIT_659" },
-            ]}
+          <input
+            type="text"
+            placeholder="Location"
+            className="w-full mb-5 border px-6 py-3 rounded outline-bluebonnet "
           />
           <input
             type="text"
@@ -37,21 +32,6 @@ export const AddHardwareModal = ({ isOpen, setIsOpen }: Props) => {
           <input
             type="text"
             placeholder="Coordinates"
-            className="w-full mb-5 border px-6 py-3 rounded outline-bluebonnet "
-          />
-          <input
-            type="text"
-            placeholder="Gateway Model"
-            className="w-full mb-5 border px-6 py-3 rounded outline-bluebonnet "
-          />
-          <input
-            type="text"
-            placeholder="Firmware"
-            className="w-full mb-5 border px-6 py-3 rounded outline-bluebonnet "
-          />
-          <input
-            type="text"
-            placeholder="Variant"
             className="w-full mb-5 border px-6 py-3 rounded outline-bluebonnet "
           />
 

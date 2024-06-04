@@ -38,7 +38,7 @@ const CurvedNavbar = () => {
   }, [location]);
 
   return (
-    <div className=" hidden sm:block fixed z-30 left-0 right-0 bottom-9">
+    <div className=" hidden sm:block fixed z-50 left-0 right-0 bottom-9">
       <div className=" bg-[#000239] justify-between relative md:w-[500px] w-[320px] h-[70px] flex items-center rounded-[23px] mx-auto ">
         <ul className="flex justify-between w-full">
           <li className="relative list-none w-[70px] h-[70px] z-[1] flex items-center justify-center">

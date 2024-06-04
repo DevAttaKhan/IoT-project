@@ -46,7 +46,7 @@ export const SiteLocationTable = () => {
             </TableButton>
           </div>
         </div>
-        <div className="mb-20 relative h-96 rounded-md overflow-hidden">
+        <div className="mb-20 relative h-80 lg:h-96 rounded-md overflow-hidden">
           <SiteMap />
         </div>
         <div className="md:overflow-x-visible  overflow-x-auto pb-4">

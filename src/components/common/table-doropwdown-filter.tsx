@@ -7,7 +7,7 @@ interface Props<TData, TValue> {
   column?: Column<TData, TValue>;
   name?: string;
   title?: string;
-  options: { label: string; value: string }[];
+  options: { label?: string; value?: string }[];
 }
 
 export const TableDropdownFilter = <TData, TValue>({
@@ -67,7 +67,7 @@ export const TableDropdownFilter = <TData, TValue>({
                   type="checkbox"
                   id={el.label}
                   name={el.label}
-                  checked={selectedFilters.includes(el.label)}
+                  checked={!!el.label && selectedFilters.includes(el.label)}
                   onChange={handleFilterSelect}
                 />
 

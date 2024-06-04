@@ -19,6 +19,7 @@ export interface IAlarm {
   siteId: string;
   description: string;
   currentStatus: string;
+  remark?: string;
 }
 
 export const AlarmStateData: IAlarmStat[] = [
@@ -148,12 +149,29 @@ export const ActiveAlarmColumns: ColumnDef<IAlarm>[] = [
       );
     },
   },
+  {
+    accessorKey: "remark",
+    header: "Remarks",
+    cell: () => {
+      return (
+        <input
+          type="text"
+          placeholder="Enter Remark"
+          className="w-52  border px-6 py-2 rounded outline-bluebonnet "
+        />
+      );
+    },
+  },
 ];
 
 export const AlarmHistoryColumns: ColumnDef<IAlarm>[] = [
   {
     accessorKey: "alarmId",
     header: "Alarm ID",
+  },
+  {
+    accessorKey: "siteId",
+    header: "Site ID",
   },
   {
     accessorKey: "type",
@@ -191,10 +209,6 @@ export const AlarmHistoryColumns: ColumnDef<IAlarm>[] = [
         </p>
       );
     },
-  },
-  {
-    accessorKey: "siteId",
-    header: "Site ID",
   },
   {
     accessorKey: "description",

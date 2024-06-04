@@ -10,8 +10,7 @@ export const EVENTS_FILTER_OPTIONS = [
 
 export interface IUser {
   name: string;
-  location: string;
-  siteId: string;
+  role: string;
   phoneNumber: string;
   email: string;
   actions: string;
@@ -22,8 +21,11 @@ export const UserData: IUser[] = Array.from(
   (_, i) => i + 1
 ).map((_el) => ({
   name: faker.person.fullName(),
-  location: faker.location.streetAddress(),
-  siteId: faker.string.alphanumeric(6),
+  role: faker.helpers.enumValue({
+    Admin: "Admin",
+    User: "User",
+    Manager: "Manger",
+  }),
   phoneNumber: faker.phone.number(),
   email: faker.internet.email(),
   actions: "",
@@ -35,19 +37,13 @@ export const columns = (action: any): ColumnDef<IUser>[] => [
     header: "NAME",
   },
   {
-    accessorKey: "location",
-    header: "LOCATION",
+    accessorKey: "role",
+    header: "role",
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
   },
-  {
-    accessorKey: "siteId",
-    header: "SITE ID",
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
-    },
-  },
+
   {
     accessorKey: "phoneNumber",
     header: "PHONE #",

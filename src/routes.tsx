@@ -10,12 +10,18 @@ import {
   UsersPage,
   AlarmsPage,
   AlarmHistoryPage,
+  NotFoundPage,
+  HomePage,
 } from "./pages";
 
 export const routes = createBrowserRouter([
   {
+    path: "*",
+    element: <NotFoundPage />,
+  },
+  {
     path: "/",
-    element: <Link to="dashboard">click to go to dashboard</Link>,
+    element: <HomePage />,
   },
   {
     path: "/login",

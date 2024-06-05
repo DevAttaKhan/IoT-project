@@ -40,7 +40,7 @@ export const SearchDropdown = ({ options, placeholder }: Props) => {
       className="relative"
     >
       <ComboboxInput
-        className="w-full mb-5 border px-6 py-3 rounded outline-bluebonnet "
+        className="w-full mb-5 border py-2 px-3 lg:px-6 lg:py-3 rounded outline-bluebonnet "
         displayValue={(option: Option) => option?.name}
         onChange={(event) => setQuery(event.target.value)}
         placeholder={placeholder}

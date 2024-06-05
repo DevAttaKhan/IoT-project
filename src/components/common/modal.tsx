@@ -43,11 +43,14 @@ export const Modal = ({ children, isOpen, widthClass, onClose }: Props) => {
               >
                 <DialogPanel
                   className={classNames(
-                    "relative shadow-lg rounded-xl p-9 bg-white w-[90%]",
+                    "relative shadow-lg rounded-xl p-4 md:p-6 lg:p-9 bg-white w-[90%]",
                     widthClass
                   )}
                 >
-                  <button onClick={onClose} className="absolute top-7 right-7">
+                  <button
+                    onClick={onClose}
+                    className="absolute top-2 right-2 md:top-5 md:right-5 lg:top-7 lg:right-7"
+                  >
                     <CloseIcon />
                   </button>
                   {children}

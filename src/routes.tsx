@@ -1,4 +1,4 @@
-import { Link, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "@/components/common/protected-route";
 import LoginPage from "./pages/login.page";
 import ResetPasswordPage from "./pages/reset-password.page";
